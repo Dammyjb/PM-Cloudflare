@@ -347,6 +347,191 @@
         .toast.error {
             background: #ef4444;
         }
+
+        /* Input Form Styles */
+        .input-section {
+            background: #1a1a1a;
+            border-radius: 12px;
+            border: 1px solid #2a2a2a;
+            margin-bottom: 30px;
+            overflow: hidden;
+        }
+
+        .input-header {
+            padding: 16px 20px;
+            background: linear-gradient(90deg, rgba(59,130,246,0.2) 0%, transparent 100%);
+            border-bottom: 1px solid #2a2a2a;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .input-header h2 {
+            font-size: 16px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .input-header .toggle-icon {
+            transition: transform 0.3s;
+        }
+
+        .input-section.collapsed .input-header .toggle-icon {
+            transform: rotate(-90deg);
+        }
+
+        .input-section.collapsed .input-body {
+            display: none;
+        }
+
+        .input-body {
+            padding: 20px;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+
+        .form-group label {
+            font-size: 12px;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            background: #111;
+            border: 1px solid #333;
+            border-radius: 8px;
+            padding: 12px;
+            color: #fff;
+            font-size: 14px;
+            font-family: inherit;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #f48120;
+        }
+
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .form-actions {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        /* Classification Result */
+        .classification-result {
+            margin-top: 20px;
+            padding: 20px;
+            background: #111;
+            border-radius: 8px;
+            border: 1px solid #333;
+            display: none;
+        }
+
+        .classification-result.show {
+            display: block;
+        }
+
+        .result-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        .result-header h3 {
+            font-size: 14px;
+            color: #fff;
+        }
+
+        .result-route {
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .result-route.immediate_engineering {
+            background: rgba(239,68,68,0.2);
+            color: #ef4444;
+        }
+
+        .result-route.trust_risk {
+            background: rgba(245,158,11,0.2);
+            color: #f59e0b;
+        }
+
+        .result-route.quick_win_backlog {
+            background: rgba(34,197,94,0.2);
+            color: #22c55e;
+        }
+
+        .result-route.standard_backlog {
+            background: rgba(156,163,175,0.2);
+            color: #9ca3af;
+        }
+
+        .result-scores {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 16px;
+        }
+
+        .result-score {
+            text-align: center;
+        }
+
+        .result-score .score-value {
+            font-size: 28px;
+            font-weight: 700;
+        }
+
+        .result-score .score-label {
+            font-size: 11px;
+            color: #666;
+            text-transform: uppercase;
+        }
+
+        .result-score.urgency .score-value { color: #ef4444; }
+        .result-score.sentiment .score-value { color: #f59e0b; }
+        .result-score.impact .score-value { color: #8b5cf6; }
+        .result-score.actionability .score-value { color: #3b82f6; }
+
+        .result-reasoning {
+            padding: 12px;
+            background: #0a0a0a;
+            border-radius: 6px;
+            font-size: 13px;
+            color: #aaa;
+            line-height: 1.6;
+        }
     </style>
 </head>
 <body>
@@ -355,6 +540,83 @@
             <h1>Feedback Intelligence Dashboard</h1>
             <p>Cloudflare/cloudflared - AI-powered feedback analysis</p>
         </header>
+
+        <!-- Ticket Input Form -->
+        <div class="input-section" id="inputSection">
+            <div class="input-header" onclick="toggleInputForm()">
+                <h2>
+                    <span class="toggle-icon">▼</span>
+                    Submit New Ticket for Classification
+                </h2>
+                <span style="font-size: 12px; color: #666;">Click to expand/collapse</span>
+            </div>
+            <div class="input-body">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Source</label>
+                        <select id="ticketSource">
+                            <option value="github">GitHub Issue</option>
+                            <option value="zendesk">Zendesk Ticket</option>
+                            <option value="discord">Discord Message</option>
+                            <option value="email">Email</option>
+                            <option value="survey">Survey Response</option>
+                            <option value="manual">Manual Entry</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Label (optional)</label>
+                        <select id="ticketLabel">
+                            <option value="">None</option>
+                            <option value="Bug">Bug</option>
+                            <option value="Feature Request">Feature Request</option>
+                            <option value="Question">Question</option>
+                            <option value="Documentation">Documentation</option>
+                            <option value="Security">Security</option>
+                        </select>
+                    </div>
+                    <div class="form-group full-width">
+                        <label>Title</label>
+                        <input type="text" id="ticketTitle" placeholder="e.g., Tunnel fails to reconnect after network outage">
+                    </div>
+                    <div class="form-group full-width">
+                        <label>Content / Description</label>
+                        <textarea id="ticketContent" placeholder="Describe the issue, feature request, or question in detail..."></textarea>
+                    </div>
+                </div>
+                <div class="form-actions">
+                    <button class="btn" onclick="submitAndClassify()" id="submitBtn">Submit & Classify</button>
+                    <button class="btn secondary" onclick="clearForm()">Clear</button>
+                    <span id="submitStatus" style="font-size: 13px; color: #666;"></span>
+                </div>
+
+                <!-- Classification Result -->
+                <div class="classification-result" id="classificationResult">
+                    <div class="result-header">
+                        <h3>Classification Result</h3>
+                        <span class="result-route" id="resultRoute"></span>
+                    </div>
+                    <div class="result-scores">
+                        <div class="result-score urgency">
+                            <div class="score-value" id="resultUrgency">-</div>
+                            <div class="score-label">Urgency</div>
+                        </div>
+                        <div class="result-score sentiment">
+                            <div class="score-value" id="resultSentiment">-</div>
+                            <div class="score-label">Sentiment</div>
+                        </div>
+                        <div class="result-score impact">
+                            <div class="score-value" id="resultImpact">-</div>
+                            <div class="score-label">Impact</div>
+                        </div>
+                        <div class="result-score actionability">
+                            <div class="score-value" id="resultActionability">-</div>
+                            <div class="score-label">Actionability</div>
+                        </div>
+                    </div>
+                    <div class="result-reasoning" id="resultReasoning"></div>
+                </div>
+            </div>
+        </div>
 
         <div class="actions-bar">
             <button class="btn" onclick="generateSummary()" id="summaryBtn">Generate PM Summary</button>
@@ -608,6 +870,112 @@
             const div = document.createElement('div');
             div.textContent = text;
             return div.innerHTML;
+        }
+
+        // Toggle input form
+        function toggleInputForm() {
+            const section = document.getElementById('inputSection');
+            section.classList.toggle('collapsed');
+        }
+
+        // Submit and classify new ticket
+        async function submitAndClassify() {
+            const title = document.getElementById('ticketTitle').value.trim();
+            const content = document.getElementById('ticketContent').value.trim();
+            const source = document.getElementById('ticketSource').value;
+            const label = document.getElementById('ticketLabel').value;
+
+            if (!title || !content) {
+                showToast('Please enter both title and content', true);
+                return;
+            }
+
+            const btn = document.getElementById('submitBtn');
+            const status = document.getElementById('submitStatus');
+            btn.disabled = true;
+            btn.textContent = 'Processing...';
+            status.textContent = 'Ingesting ticket...';
+
+            try {
+                // Generate unique ID
+                const ticketId = `manual-${Date.now()}`;
+
+                // Step 1: Ingest the ticket
+                const ingestResponse = await fetch(`${API_BASE}/api/ingest`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        id: ticketId,
+                        source: source,
+                        title: title,
+                        content: content,
+                        label: label || null,
+                        author: 'manual-entry',
+                        created_at: new Date().toISOString()
+                    })
+                });
+
+                if (!ingestResponse.ok) {
+                    throw new Error('Failed to ingest ticket');
+                }
+
+                status.textContent = 'Classifying with AI...';
+
+                // Step 2: Classify the ticket
+                const classifyResponse = await fetch(`${API_BASE}/api/classify?limit=1`, {
+                    method: 'POST'
+                });
+
+                const classifyData = await classifyResponse.json();
+
+                if (classifyData.classified && classifyData.classified.length > 0) {
+                    const result = classifyData.classified.find(c => c.id === ticketId) || classifyData.classified[0];
+                    displayClassificationResult(result);
+                    showToast('Ticket classified successfully!');
+
+                    // Refresh dashboard to show new item
+                    loadDashboard();
+                } else {
+                    showToast('Ticket ingested but classification pending', false);
+                }
+
+            } catch (error) {
+                showToast('Error: ' + error.message, true);
+                console.error(error);
+            } finally {
+                btn.disabled = false;
+                btn.textContent = 'Submit & Classify';
+                status.textContent = '';
+            }
+        }
+
+        // Display classification result
+        function displayClassificationResult(result) {
+            const container = document.getElementById('classificationResult');
+
+            document.getElementById('resultUrgency').textContent = result.urgency;
+            document.getElementById('resultSentiment').textContent = result.sentiment > 0 ? `+${result.sentiment}` : result.sentiment;
+            document.getElementById('resultImpact').textContent = result.impact;
+            document.getElementById('resultActionability').textContent = result.actionability;
+
+            const routeEl = document.getElementById('resultRoute');
+            const route = result.route || 'standard_backlog';
+            const routeDisplay = route.split(',')[0]; // Take first route if multiple
+            routeEl.textContent = routeDisplay.replace(/_/g, ' ').toUpperCase();
+            routeEl.className = 'result-route ' + routeDisplay;
+
+            document.getElementById('resultReasoning').textContent = result.reasoning || 'No reasoning provided';
+
+            container.classList.add('show');
+        }
+
+        // Clear form
+        function clearForm() {
+            document.getElementById('ticketTitle').value = '';
+            document.getElementById('ticketContent').value = '';
+            document.getElementById('ticketSource').value = 'github';
+            document.getElementById('ticketLabel').value = '';
+            document.getElementById('classificationResult').classList.remove('show');
         }
 
         // Load dashboard on page load
