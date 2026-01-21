@@ -1,0 +1,38 @@
+{
+	"$schema": "node_modules/wrangler/config-schema.json",
+	"name": "feedback-prototype",
+	"main": "src/index.ts",
+	"compatibility_date": "2026-01-14",
+	"compatibility_flags": ["nodejs_compat"],
+	"observability": {
+		"enabled": true
+	},
+
+	// Static assets (HTML dashboard)
+	"assets": {
+		"directory": "./public",
+		"binding": "ASSETS"
+	},
+
+	// Workers AI Binding
+	"ai": {
+		"binding": "AI"
+	},
+
+	// D1 Database Binding
+	"d1_databases": [
+		{
+			"binding": "DB",
+			"database_name": "feedback-intelligence-db",
+			"database_id": "21b2fb4c-e325-4eb4-a662-af04130798c0"
+		}
+	],
+
+	// KV Namespace Binding
+	"kv_namespaces": [
+		{
+			"binding": "KV",
+			"id": "10b9908778a547888d383822f5a55f60"
+		}
+	]
+}
