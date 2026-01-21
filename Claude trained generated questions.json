@@ -1,0 +1,107 @@
+{
+    "hypothetical_issues": [
+      {
+        "id": "A",
+        "title": "Documentation for access policies is outdated and misleading",
+        "label": "Documentation",
+        "comment": "I've been trying to configure access policies for our tunnel for three days now. The documentation says to use `cloudflared access`
+  commands but half the flags mentioned don't exist in the current version. I followed the official guide step-by-step and it just doesn't work.\n\nThis is
+  really frustrating. We chose Cloudflare Tunnel specifically because of the promised simplicity, but I've spent more time debugging docs than actually
+  building. Our team is starting to question whether we should just go back to a traditional VPN setup.\n\nCan someone please update the docs or at least
+  add a version disclaimer?",
+        "classification": {
+          "urgency": 2,
+          "sentiment": -2,
+          "impact": 3,
+          "actionability": 4
+        },
+        "routing": {
+          "immediate_engineering": false,
+          "quick_win_backlog": true,
+          "trust_risk": true
+        },
+        "archetype": "low_urgency_high_trust_risk"
+      },
+      {
+        "id": "B",
+        "title": "Tunnel disconnects silently under memory pressure, no reconnect attempt",
+        "label": "Bug",
+        "comment": "**Environment:** Ubuntu 22.04, cloudflared 2024.1.5, running as systemd service\n\n**Describe the bug:**\nWhen the host system
+  experiences memory pressure (OOM killer activated for other processes), cloudflared loses its connection to the edge but does not attempt to reconnect.
+  The process remains running with no errors in logs. The tunnel appears healthy in the dashboard but no traffic passes through.\n\n**Steps to
+  reproduce:**\n1. Run cloudflared tunnel with default config\n2. Simulate memory pressure (`stress --vm 4 --vm-bytes 1G`)\n3. Wait for OOM killer to free
+  memory\n4. Observe tunnel status — shows connected but traffic times out\n\n**Expected behavior:** cloudflared should detect connection loss and reconnect
+   automatically.\n\n**Workaround:** Manual service restart recovers the tunnel.\n\nThis is affecting three production nodes in our cluster.",
+        "classification": {
+          "urgency": 5,
+          "sentiment": 0,
+          "impact": 4,
+          "actionability": 5
+        },
+        "routing": {
+          "immediate_engineering": true,
+          "quick_win_backlog": false,
+          "trust_risk": false
+        },
+        "archetype": "high_urgency_neutral_sentiment"
+      },
+      {
+        "id": "C",
+        "title": "WHY is there no GUI?? This is ridiculous in 2024",
+        "label": "Feature Request",
+        "comment": "Seriously, why do I have to use the command line for everything? Not everyone is a Linux sysadmin. I just want to click a button to
+  start my tunnel like a normal application.\n\nI tried to set this up for my home server to access my Plex remotely and I had to watch THREE YouTube videos
+   just to understand what a \"config.yml\" even is. This is absolutely unacceptable for a company the size of Cloudflare.\n\nOther tunnel solutions have
+  nice desktop apps. Why can't you just make a simple GUI wrapper? How hard can it be???\n\nI'm mad that I wasted my entire Saturday on this. Terrible UX.
+  Zero stars.",
+        "classification": {
+          "urgency": 1,
+          "sentiment": -2,
+          "impact": 2,
+          "actionability": 2
+        },
+        "routing": {
+          "immediate_engineering": false,
+          "quick_win_backlog": false,
+          "trust_risk": false
+        },
+        "archetype": "noisy_complaint_low_impact"
+      }
+    ],
+    "routing_rules": {
+      "immediate_engineering": {
+        "condition": "urgency >= 4 AND impact >= 4",
+        "description": "Production-critical issues requiring immediate engineering attention"
+      },
+      "quick_win_backlog": {
+        "condition": "urgency <= 2 AND actionability >= 4",
+        "description": "Low-pressure issues with clear, well-defined solutions"
+      },
+      "trust_risk": {
+        "condition": "sentiment < 0 AND impact >= 3",
+        "description": "Frustrated users with meaningful workflow disruption"
+      }
+    },
+    "classification_scales": {
+      "urgency": {
+        "min": 1,
+        "max": 5,
+        "labels": ["Low", "Moderate", "High", "Severe", "Critical"]
+      },
+      "sentiment": {
+        "min": -2,
+        "max": 2,
+        "labels": ["Frustrated", "Dissatisfied", "Neutral", "Appreciative", "Enthusiastic"]
+      },
+      "impact": {
+        "min": 1,
+        "max": 5,
+        "labels": ["Minimal", "Low", "Moderate", "High", "Severe"]
+      },
+      "actionability": {
+        "min": 1,
+        "max": 5,
+        "labels": ["Unclear", "Needs Info", "Partially Actionable", "Actionable", "Immediately Actionable"]
+      }
+    }
+  }

@@ -1,0 +1,56 @@
+[
+  {
+    "id": "cf-001",
+    "source": "github",
+    "product": "cloudflared",
+    "title": "Question regarding Cloudflare WARP VPN client usage",
+    "body": "I would value your opinion on whether it is safe to use the consumer version of the Cloudflare WARP client within the organization. I am specifically concerned about the security of the tunnels.",
+    "labels": ["question"],
+    "user_impact": "Uncertainty about security posture and tunnel safety for organizational use"
+  },
+  {
+    "id": "cf-002",
+    "source": "github",
+    "product": "cloudflared",
+    "title": "After fallback to http2 cloudflared never attempts quic again",
+    "body": "Our networking was down temporarily. cloudflared failed to connect to QUIC and fell back to HTTP2. Once networking recovered, QUIC was never retried and cloudflared remained stuck retrying HTTP2 indefinitely until restart.",
+    "labels": ["bug"],
+    "user_impact": "Persistent tunnel failure requiring manual restart, affecting production reliability"
+  },
+  {
+    "id": "cf-003",
+    "source": "github",
+    "product": "cloudflared",
+    "title": "Tunnel subdomain intermittently fails on Windows domain-joined machines",
+    "body": "Cloudflare Tunnel works on non-domain machines but fails on Windows domain-joined machines when the parent domain is hosted on Active Directory DNS. The setup worked initially but now fails consistently.",
+    "labels": ["bug"],
+    "user_impact": "Enterprise Windows environments unable to reliably access tunneled services"
+  },
+  {
+    "id": "cf-004",
+    "source": "github",
+    "product": "cloudflared",
+    "title": "Firewall / Docker configuration help for cloudflared",
+    "body": "User wants to configure firewall rules so cloudflared only connects to Cloudflare endpoints while blocking all other outbound traffic in Docker and Ubuntu.",
+    "labels": ["question"],
+    "user_impact": "Difficulty securely configuring tunnel networking and firewall rules"
+  },
+  {
+    "id": "cf-005",
+    "source": "github",
+    "product": "cloudflared",
+    "title": "Please publish containers on ghcr",
+    "body": "Docker Hub pull limits cause friction. Publishing cloudflared images to GitHub Container Registry would avoid rate limits and improve CI reliability.",
+    "labels": ["feature-request"],
+    "user_impact": "CI/CD pipelines disrupted by Docker Hub pull limits"
+  },
+  {
+    "id": "cf-006",
+    "source": "github",
+    "product": "cloudflared",
+    "title": "cloudflared cannot be installed via apt or deb packages",
+    "body": "Installation via apt and deb fails due to abnormal download behavior. Packages cannot be installed successfully.",
+    "labels": ["bug"],
+    "user_impact": "Users unable to install cloudflared using standard package managers"
+  }
+]
