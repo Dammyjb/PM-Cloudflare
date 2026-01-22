@@ -569,6 +569,248 @@
         .action-btn.slack:hover { border-color: #22c55e; color: #22c55e; }
         .action-btn.copy:hover { border-color: #f59e0b; color: #f59e0b; }
         .action-btn.jira:hover { border-color: #8b5cf6; color: #8b5cf6; }
+
+        /* Feedback by Platform Section */
+        .platform-section {
+            background: #1a1a1a;
+            border-radius: 12px;
+            border: 1px solid #2a2a2a;
+            margin-bottom: 30px;
+            overflow: hidden;
+        }
+
+        .platform-section-header {
+            padding: 16px 20px;
+            border-bottom: 1px solid #2a2a2a;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .platform-section-header h2 {
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .platform-filters {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .platform-filter {
+            padding: 8px 16px;
+            border-radius: 20px;
+            border: 1px solid #333;
+            background: #222;
+            color: #aaa;
+            font-size: 13px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .platform-filter:hover {
+            border-color: #444;
+            color: #fff;
+        }
+
+        .platform-filter.active {
+            background: #f48120;
+            border-color: #f48120;
+            color: #000;
+        }
+
+        .platform-filter .count {
+            background: rgba(0,0,0,0.2);
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 11px;
+        }
+
+        .platform-filter.active .count {
+            background: rgba(0,0,0,0.3);
+        }
+
+        .platform-icon {
+            font-size: 14px;
+        }
+
+        .feedback-list {
+            max-height: 600px;
+            overflow-y: auto;
+        }
+
+        .feedback-list-item {
+            padding: 16px 20px;
+            border-bottom: 1px solid #222;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .feedback-list-item:hover {
+            background: #222;
+        }
+
+        .feedback-list-item:last-child {
+            border-bottom: none;
+        }
+
+        .feedback-list-item .item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 8px;
+        }
+
+        .feedback-list-item .item-title {
+            font-weight: 600;
+            color: #fff;
+            flex: 1;
+        }
+
+        .feedback-list-item .item-source {
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .feedback-list-item .item-source.github { background: rgba(36, 41, 46, 0.8); color: #fff; }
+        .feedback-list-item .item-source.discord { background: rgba(88, 101, 242, 0.3); color: #5865F2; }
+        .feedback-list-item .item-source.x { background: rgba(255, 255, 255, 0.1); color: #fff; }
+        .feedback-list-item .item-source.email { background: rgba(59, 130, 246, 0.2); color: #3b82f6; }
+        .feedback-list-item .item-source.survey { background: rgba(34, 197, 94, 0.2); color: #22c55e; }
+        .feedback-list-item .item-source.manual { background: rgba(156, 163, 175, 0.2); color: #9ca3af; }
+
+        .feedback-list-item .item-preview {
+            font-size: 13px;
+            color: #888;
+            margin-bottom: 10px;
+            line-height: 1.5;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .feedback-list-item .item-meta {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            font-size: 12px;
+        }
+
+        .feedback-list-item .item-date {
+            color: #666;
+        }
+
+        .feedback-list-item .item-label {
+            padding: 2px 8px;
+            border-radius: 4px;
+            background: #333;
+            color: #aaa;
+        }
+
+        /* Expanded feedback detail panel */
+        .feedback-detail-panel {
+            background: #111;
+            border-top: 1px solid #333;
+            padding: 20px;
+            display: none;
+        }
+
+        .feedback-list-item.expanded .feedback-detail-panel {
+            display: block;
+        }
+
+        .detail-section {
+            margin-bottom: 16px;
+        }
+
+        .detail-section:last-child {
+            margin-bottom: 0;
+        }
+
+        .detail-section h4 {
+            font-size: 12px;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+        }
+
+        .detail-content {
+            font-size: 14px;
+            color: #ccc;
+            line-height: 1.6;
+            white-space: pre-wrap;
+        }
+
+        .detail-scores {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .detail-score {
+            text-align: center;
+            padding: 12px 16px;
+            background: #1a1a1a;
+            border-radius: 8px;
+            min-width: 80px;
+        }
+
+        .detail-score .score-value {
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .detail-score .score-label {
+            font-size: 10px;
+            color: #666;
+            text-transform: uppercase;
+            margin-top: 4px;
+        }
+
+        .detail-score.urgency .score-value { color: #ef4444; }
+        .detail-score.sentiment .score-value { color: #f59e0b; }
+        .detail-score.impact .score-value { color: #8b5cf6; }
+        .detail-score.actionability .score-value { color: #3b82f6; }
+
+        .detail-route {
+            display: inline-block;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .detail-route.immediate_engineering { background: rgba(239,68,68,0.2); color: #ef4444; }
+        .detail-route.trust_risk { background: rgba(245,158,11,0.2); color: #f59e0b; }
+        .detail-route.quick_win_backlog { background: rgba(34,197,94,0.2); color: #22c55e; }
+        .detail-route.standard_backlog { background: rgba(156,163,175,0.2); color: #9ca3af; }
+
+        .detail-reasoning {
+            padding: 12px;
+            background: #0a0a0a;
+            border-radius: 6px;
+            font-size: 13px;
+            color: #aaa;
+            line-height: 1.6;
+        }
+
+        .no-classification {
+            color: #666;
+            font-style: italic;
+        }
     </style>
 </head>
 <body>
@@ -593,8 +835,8 @@
                         <label>Source</label>
                         <select id="ticketSource">
                             <option value="github">GitHub Issue</option>
-                            <option value="zendesk">Zendesk Ticket</option>
                             <option value="discord">Discord Message</option>
+                            <option value="x">X (Twitter)</option>
                             <option value="email">Email</option>
                             <option value="survey">Survey Response</option>
                             <option value="manual">Manual Entry</option>
@@ -685,6 +927,48 @@
 
         <div class="metrics-grid" id="metricsGrid">
             <div class="loading"><div class="spinner"></div><p>Loading metrics...</p></div>
+        </div>
+
+        <!-- Feedback by Platform Section -->
+        <div class="platform-section" id="platformSection">
+            <div class="platform-section-header">
+                <h2>Feedback by Platform</h2>
+                <div class="platform-filters" id="platformFilters">
+                    <button class="platform-filter active" data-platform="all">
+                        <span class="platform-icon">📊</span>
+                        All
+                        <span class="count" id="countAll">0</span>
+                    </button>
+                    <button class="platform-filter" data-platform="github">
+                        <span class="platform-icon">🐙</span>
+                        GitHub
+                        <span class="count" id="countGithub">0</span>
+                    </button>
+                    <button class="platform-filter" data-platform="discord">
+                        <span class="platform-icon">💬</span>
+                        Discord
+                        <span class="count" id="countDiscord">0</span>
+                    </button>
+                    <button class="platform-filter" data-platform="x">
+                        <span class="platform-icon">𝕏</span>
+                        X
+                        <span class="count" id="countX">0</span>
+                    </button>
+                    <button class="platform-filter" data-platform="email">
+                        <span class="platform-icon">✉️</span>
+                        Email
+                        <span class="count" id="countEmail">0</span>
+                    </button>
+                    <button class="platform-filter" data-platform="survey">
+                        <span class="platform-icon">📝</span>
+                        Survey
+                        <span class="count" id="countSurvey">0</span>
+                    </button>
+                </div>
+            </div>
+            <div class="feedback-list" id="feedbackList">
+                <div class="loading"><div class="spinner"></div><p>Loading feedback...</p></div>
+            </div>
         </div>
 
         <div class="signals-section">
@@ -1213,8 +1497,194 @@ ${jiraData.description}`;
             });
         }
 
+        // ============ FEEDBACK BY PLATFORM ============
+
+        let allFeedback = [];
+        let currentPlatformFilter = 'all';
+
+        // Load all feedback
+        async function loadAllFeedback() {
+            try {
+                const response = await fetch(`${API_BASE}/api/feedback?limit=200`);
+                const data = await response.json();
+                allFeedback = data.feedback || [];
+                updatePlatformCounts();
+                renderFeedbackList();
+            } catch (error) {
+                console.error('Failed to load feedback:', error);
+                document.getElementById('feedbackList').innerHTML =
+                    '<div class="empty-state">Failed to load feedback</div>';
+            }
+        }
+
+        // Update platform filter counts
+        function updatePlatformCounts() {
+            const counts = {
+                all: allFeedback.length,
+                github: 0,
+                discord: 0,
+                x: 0,
+                email: 0,
+                survey: 0
+            };
+
+            allFeedback.forEach(item => {
+                const source = (item.source || '').toLowerCase();
+                if (counts.hasOwnProperty(source)) {
+                    counts[source]++;
+                }
+            });
+
+            document.getElementById('countAll').textContent = counts.all;
+            document.getElementById('countGithub').textContent = counts.github;
+            document.getElementById('countDiscord').textContent = counts.discord;
+            document.getElementById('countX').textContent = counts.x;
+            document.getElementById('countEmail').textContent = counts.email;
+            document.getElementById('countSurvey').textContent = counts.survey;
+        }
+
+        // Filter feedback by platform
+        function filterByPlatform(platform) {
+            currentPlatformFilter = platform;
+
+            // Update active state on filter buttons
+            document.querySelectorAll('.platform-filter').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.platform === platform);
+            });
+
+            renderFeedbackList();
+        }
+
+        // Render the feedback list
+        function renderFeedbackList() {
+            const list = document.getElementById('feedbackList');
+
+            let filteredFeedback = allFeedback;
+            if (currentPlatformFilter !== 'all') {
+                filteredFeedback = allFeedback.filter(item =>
+                    (item.source || '').toLowerCase() === currentPlatformFilter
+                );
+            }
+
+            if (filteredFeedback.length === 0) {
+                list.innerHTML = '<div class="empty-state">No feedback found for this platform</div>';
+                return;
+            }
+
+            // Sort by date (newest first)
+            filteredFeedback.sort((a, b) =>
+                new Date(b.created_at) - new Date(a.created_at)
+            );
+
+            list.innerHTML = filteredFeedback.map(item => renderFeedbackListItem(item)).join('');
+
+            // Add click handlers for expanding items
+            list.querySelectorAll('.feedback-list-item').forEach(el => {
+                el.addEventListener('click', (e) => {
+                    // Don't toggle if clicking on action buttons inside
+                    if (e.target.closest('.action-btn')) return;
+                    el.classList.toggle('expanded');
+                });
+            });
+        }
+
+        // Render a single feedback list item
+        function renderFeedbackListItem(item) {
+            const source = (item.source || 'unknown').toLowerCase();
+            const hasClassification = item.urgency !== undefined && item.urgency !== null;
+            const route = item.route || 'standard_backlog';
+            const routeDisplay = route.split(',')[0];
+
+            const dateStr = item.created_at
+                ? new Date(item.created_at).toLocaleDateString('en-US', {
+                    month: 'short', day: 'numeric', year: 'numeric'
+                  })
+                : 'Unknown date';
+
+            return `
+                <div class="feedback-list-item" data-id="${escapeHtml(item.id)}">
+                    <div class="item-header">
+                        <div class="item-title">${escapeHtml(item.title)}</div>
+                        <span class="item-source ${source}">${escapeHtml(item.source || 'Unknown')}</span>
+                    </div>
+                    <div class="item-preview">${escapeHtml(item.content || '')}</div>
+                    <div class="item-meta">
+                        <span class="item-date">${dateStr}</span>
+                        ${item.label ? `<span class="item-label">${escapeHtml(item.label)}</span>` : ''}
+                        ${hasClassification ? `
+                            <span class="score-badge urgency">U:${item.urgency}</span>
+                            <span class="score-badge ${getSentimentClass(item.sentiment)}">S:${item.sentiment}</span>
+                            <span class="score-badge impact">I:${item.impact}</span>
+                        ` : '<span class="item-label">Pending classification</span>'}
+                    </div>
+
+                    <!-- Expanded Detail Panel -->
+                    <div class="feedback-detail-panel">
+                        <div class="detail-section">
+                            <h4>Full Content</h4>
+                            <div class="detail-content">${escapeHtml(item.content || 'No content available')}</div>
+                        </div>
+
+                        ${hasClassification ? `
+                            <div class="detail-section">
+                                <h4>Classification Scores</h4>
+                                <div class="detail-scores">
+                                    <div class="detail-score urgency">
+                                        <div class="score-value">${item.urgency}</div>
+                                        <div class="score-label">Urgency</div>
+                                    </div>
+                                    <div class="detail-score sentiment">
+                                        <div class="score-value">${item.sentiment > 0 ? '+' : ''}${item.sentiment}</div>
+                                        <div class="score-label">Sentiment</div>
+                                    </div>
+                                    <div class="detail-score impact">
+                                        <div class="score-value">${item.impact}</div>
+                                        <div class="score-label">Impact</div>
+                                    </div>
+                                    <div class="detail-score actionability">
+                                        <div class="score-value">${item.actionability}</div>
+                                        <div class="score-label">Actionability</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="detail-section">
+                                <h4>Routing</h4>
+                                <span class="detail-route ${routeDisplay}">${routeDisplay.replace(/_/g, ' ').toUpperCase()}</span>
+                            </div>
+
+                            <div class="detail-section">
+                                <h4>AI Reasoning</h4>
+                                <div class="detail-reasoning">${escapeHtml(item.reasoning || 'No reasoning available')}</div>
+                            </div>
+                        ` : `
+                            <div class="detail-section">
+                                <p class="no-classification">This feedback has not been classified yet. Click "Classify Pending" to analyze it with AI.</p>
+                            </div>
+                        `}
+
+                        <div class="detail-section">
+                            <h4>Metadata</h4>
+                            <div class="detail-content">ID: ${escapeHtml(item.id)}
+Author: ${escapeHtml(item.author || 'Unknown')}
+Source: ${escapeHtml(item.source || 'Unknown')}
+Created: ${dateStr}</div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Set up platform filter click handlers
+        document.querySelectorAll('.platform-filter').forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterByPlatform(btn.dataset.platform);
+            });
+        });
+
         // Load dashboard on page load
         loadDashboard();
+        loadAllFeedback();
     </script>
 </body>
 </html>
