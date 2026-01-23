@@ -558,11 +558,14 @@
             <button class="filter-btn" data-filter="critical">Critical</button>
             <button class="filter-btn" data-filter="trust_risk">Trust Risk</button>
             <button class="filter-btn" data-filter="quick_win">Quick Wins</button>
+            <button class="filter-btn" data-filter="standard">Standard</button>
             <span class="filter-label" style="margin-left: 16px;">Platform:</span>
             <button class="filter-btn active" data-platform="all">All</button>
             <button class="filter-btn" data-platform="github">GitHub</button>
             <button class="filter-btn" data-platform="discord">Discord</button>
             <button class="filter-btn" data-platform="x">X</button>
+            <button class="filter-btn" data-platform="email">Email</button>
+            <button class="filter-btn" data-platform="survey">Survey</button>
         </div>
 
         <!-- Priority Feed -->
@@ -750,6 +753,8 @@
                 filtered = filtered.filter(i => getPrimaryRoute(i.route) === 'trust_risk');
             } else if (currentFilter === 'quick_win') {
                 filtered = filtered.filter(i => getPrimaryRoute(i.route) === 'quick_win_backlog');
+            } else if (currentFilter === 'standard') {
+                filtered = filtered.filter(i => getPrimaryRoute(i.route) === 'standard_backlog');
             }
 
             // Apply platform filter
