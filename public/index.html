@@ -525,8 +525,9 @@
                 <p>Cloudflare/cloudflared - Priority-sorted feedback</p>
             </div>
             <div class="header-actions">
-                <button class="btn" onclick="classifyPending()" id="classifyBtn">Classify All</button>
-                <button class="btn" onclick="seedData()" id="seedBtn">Load Sample Data</button>
+                <button class="btn" onclick="classifyPending()" id="classifyBtn">Classify New</button>
+                <button class="btn" onclick="reclassifyAll()" id="reclassifyBtn">Reclassify All</button>
+                <button class="btn" onclick="seedData()" id="seedBtn">Load Samples</button>
             </div>
         </header>
 
@@ -912,7 +913,7 @@
             }
         }
 
-        // Classify pending
+        // Classify pending (only new items)
         async function classifyPending() {
             const btn = document.getElementById('classifyBtn');
             btn.disabled = true;
@@ -927,7 +928,26 @@
                 showToast('Failed to classify', true);
             } finally {
                 btn.disabled = false;
-                btn.textContent = 'Classify All';
+                btn.textContent = 'Classify New';
+            }
+        }
+
+        // Reclassify all items (force refresh)
+        async function reclassifyAll() {
+            const btn = document.getElementById('reclassifyBtn');
+            btn.disabled = true;
+            btn.textContent = 'Reclassifying...';
+
+            try {
+                const response = await fetch(`${API_BASE}/api/classify?force=true`, { method: 'POST' });
+                const data = await response.json();
+                showToast(`Reclassified ${data.classified?.length || 0} items`);
+                loadFeedback();
+            } catch (error) {
+                showToast('Failed to reclassify', true);
+            } finally {
+                btn.disabled = false;
+                btn.textContent = 'Reclassify All';
             }
         }
 

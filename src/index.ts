@@ -57,11 +57,21 @@ export default {
       // ============ CLASSIFICATION ============
 
       // POST /api/classify - Classify pending feedback using AI
+      // Use ?force=true to reclassify all items (clears existing classifications)
       if (path === "/api/classify" && request.method === "POST") {
         const rules = await config.getClassificationRules();
         const limitParam = url.searchParams.get("limit");
+        const forceParam = url.searchParams.get("force");
         const limit = limitParam ? parseInt(limitParam) : 10;
-        const unclassified = await db.getUnclassifiedFeedback(limit);
+        const force = forceParam === "true";
+
+        // If force=true, clear all classifications and reclassify from scratch
+        if (force) {
+          await env.DB.prepare("DELETE FROM classifications").run();
+          await env.DB.prepare("DELETE FROM signals").run();
+        }
+
+        const unclassified = await db.getUnclassifiedFeedback(force ? 100 : limit);
 
         if (unclassified.length === 0) {
           return Response.json(
@@ -72,11 +82,16 @@ export default {
 
         const results = [];
         for (const feedback of unclassified) {
-          // Check cache first
-          const cached = await config.getCachedClassification(feedback.id);
-          if (cached) {
-            results.push({ id: feedback.id, cached: true, ...cached });
-            continue;
+          // Skip cache if force reclassifying
+          if (!force) {
+            const cached = await config.getCachedClassification(feedback.id);
+            if (cached) {
+              results.push({ id: feedback.id, cached: true, ...cached });
+              continue;
+            }
+          } else {
+            // Clear cache for this item
+            await config.clearClassificationCache(feedback.id);
           }
 
           // Classify with AI
@@ -98,7 +113,7 @@ export default {
         }
 
         return Response.json(
-          { success: true, classified: results },
+          { success: true, classified: results, forced: force },
           { headers: corsHeaders }
         );
       }

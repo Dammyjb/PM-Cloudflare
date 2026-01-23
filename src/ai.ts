@@ -159,33 +159,35 @@ Return ONLY valid JSON (no markdown, no explanation):
     },
     rules: ClassificationRules
   ): string {
-    const routes: string[] = [];
+    // Priority order: immediate_engineering > trust_risk > quick_win_backlog > standard_backlog
+    // Only ONE route per item to avoid duplicate counting
 
-    // Check immediate engineering: Urgency >= 4 AND Impact >= 4
+    // 1. Check immediate engineering: Urgency >= 4 AND Impact >= 4 (highest priority)
     if (
       classification.urgency >= rules.routing_rules.immediate_engineering.urgency_min &&
       classification.impact >= rules.routing_rules.immediate_engineering.impact_min
     ) {
-      routes.push("immediate_engineering");
+      return "immediate_engineering";
     }
 
-    // Check quick win: Urgency <= 2 AND Actionability >= 4
-    if (
-      classification.urgency <= rules.routing_rules.quick_win_backlog.urgency_max &&
-      classification.actionability >= rules.routing_rules.quick_win_backlog.actionability_min
-    ) {
-      routes.push("quick_win_backlog");
-    }
-
-    // Check trust risk: Sentiment < 0 AND Impact >= 3
+    // 2. Check trust risk: Sentiment < 0 AND Impact >= 3
     if (
       classification.sentiment <= rules.routing_rules.trust_risk.sentiment_max &&
       classification.impact >= rules.routing_rules.trust_risk.impact_min
     ) {
-      routes.push("trust_risk");
+      return "trust_risk";
     }
 
-    return routes.length > 0 ? routes.join(",") : "standard_backlog";
+    // 3. Check quick win: Urgency <= 2 AND Actionability >= 4
+    if (
+      classification.urgency <= rules.routing_rules.quick_win_backlog.urgency_max &&
+      classification.actionability >= rules.routing_rules.quick_win_backlog.actionability_min
+    ) {
+      return "quick_win_backlog";
+    }
+
+    // 4. Default to standard backlog
+    return "standard_backlog";
   }
 
   // Generate PM summary
