@@ -118,6 +118,45 @@ export default {
         );
       }
 
+      // POST /api/fix-routes - Fix routing for existing classifications (no AI reclassification)
+      if (path === "/api/fix-routes" && request.method === "POST") {
+        const rules = await config.getClassificationRules();
+
+        // Get all classified feedback
+        const allFeedback = await db.getAllFeedbackWithClassifications(500);
+        const classified = allFeedback.filter((f: any) => f.urgency !== null);
+
+        let fixed = 0;
+        for (const item of classified) {
+          // Recalculate route based on existing scores (priority order)
+          let newRoute = "standard_backlog";
+
+          if (item.urgency >= rules.routing_rules.immediate_engineering.urgency_min &&
+              item.impact >= rules.routing_rules.immediate_engineering.impact_min) {
+            newRoute = "immediate_engineering";
+          } else if (item.sentiment <= rules.routing_rules.trust_risk.sentiment_max &&
+                     item.impact >= rules.routing_rules.trust_risk.impact_min) {
+            newRoute = "trust_risk";
+          } else if (item.urgency <= rules.routing_rules.quick_win_backlog.urgency_max &&
+                     item.actionability >= rules.routing_rules.quick_win_backlog.actionability_min) {
+            newRoute = "quick_win_backlog";
+          }
+
+          // Update route if different
+          if (item.route !== newRoute) {
+            await env.DB.prepare(
+              "UPDATE classifications SET route = ? WHERE feedback_id = ?"
+            ).bind(newRoute, item.id).run();
+            fixed++;
+          }
+        }
+
+        return Response.json(
+          { success: true, message: `Fixed routes for ${fixed} items`, total: classified.length },
+          { headers: corsHeaders }
+        );
+      }
+
       // GET /api/feedback - Get all feedback with classifications
       if (path === "/api/feedback" && request.method === "GET") {
         const limitParam = url.searchParams.get("limit");

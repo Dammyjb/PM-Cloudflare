@@ -526,7 +526,7 @@
             </div>
             <div class="header-actions">
                 <button class="btn" onclick="classifyPending()" id="classifyBtn">Classify New</button>
-                <button class="btn" onclick="reclassifyAll()" id="reclassifyBtn">Reclassify All</button>
+                <button class="btn" onclick="fixRoutes()" id="fixRoutesBtn">Fix Routes</button>
                 <button class="btn" onclick="seedData()" id="seedBtn">Load Samples</button>
             </div>
         </header>
@@ -932,22 +932,22 @@
             }
         }
 
-        // Reclassify all items (force refresh)
-        async function reclassifyAll() {
-            const btn = document.getElementById('reclassifyBtn');
+        // Fix routes for existing items (keeps original scores, just fixes routing)
+        async function fixRoutes() {
+            const btn = document.getElementById('fixRoutesBtn');
             btn.disabled = true;
-            btn.textContent = 'Reclassifying...';
+            btn.textContent = 'Fixing...';
 
             try {
-                const response = await fetch(`${API_BASE}/api/classify?force=true`, { method: 'POST' });
+                const response = await fetch(`${API_BASE}/api/fix-routes`, { method: 'POST' });
                 const data = await response.json();
-                showToast(`Reclassified ${data.classified?.length || 0} items`);
+                showToast(data.message || 'Routes fixed');
                 loadFeedback();
             } catch (error) {
-                showToast('Failed to reclassify', true);
+                showToast('Failed to fix routes', true);
             } finally {
                 btn.disabled = false;
-                btn.textContent = 'Reclassify All';
+                btn.textContent = 'Fix Routes';
             }
         }
 
