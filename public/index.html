@@ -637,12 +637,32 @@
                 const feedbackData = await feedbackRes.json();
                 const dashboardData = await dashboardRes.json();
 
-                // Deduplicate feedback by ID (in case of any data issues)
-                const feedbackMap = new Map();
+                // Deduplicate feedback by ID AND by title+source (catches manual duplicates)
+                const feedbackById = new Map();
+                const feedbackByContent = new Map();
+
                 (feedbackData.feedback || []).forEach(item => {
-                    feedbackMap.set(item.id, item);
+                    // First, dedupe by ID
+                    if (feedbackById.has(item.id)) return;
+
+                    // Then, dedupe by title+source (catches manual duplicates)
+                    const contentKey = `${(item.title || '').toLowerCase().trim()}|${(item.source || '').toLowerCase()}`;
+                    if (feedbackByContent.has(contentKey)) {
+                        // Keep the one with classification, or the newer one
+                        const existing = feedbackByContent.get(contentKey);
+                        if (!existing.urgency && item.urgency) {
+                            feedbackById.delete(existing.id);
+                            feedbackByContent.set(contentKey, item);
+                            feedbackById.set(item.id, item);
+                        }
+                        return;
+                    }
+
+                    feedbackById.set(item.id, item);
+                    feedbackByContent.set(contentKey, item);
                 });
-                allFeedback = Array.from(feedbackMap.values());
+
+                allFeedback = Array.from(feedbackById.values());
 
                 // Update stats
                 const queues = dashboardData.queues || {};
@@ -710,19 +730,25 @@
             return 'Unclear';
         }
 
+        // Get the primary route (first one if comma-separated)
+        function getPrimaryRoute(route) {
+            if (!route) return 'standard_backlog';
+            return route.split(',')[0].trim();
+        }
+
         // Render the feed
         function renderFeed() {
             const list = document.getElementById('feedList');
 
             let filtered = allFeedback;
 
-            // Apply route filter
+            // Apply route filter (use PRIMARY route only - first in comma-separated list)
             if (currentFilter === 'critical') {
-                filtered = filtered.filter(i => i.route?.includes('immediate_engineering'));
+                filtered = filtered.filter(i => getPrimaryRoute(i.route) === 'immediate_engineering');
             } else if (currentFilter === 'trust_risk') {
-                filtered = filtered.filter(i => i.route?.includes('trust_risk'));
+                filtered = filtered.filter(i => getPrimaryRoute(i.route) === 'trust_risk');
             } else if (currentFilter === 'quick_win') {
-                filtered = filtered.filter(i => i.route?.includes('quick_win'));
+                filtered = filtered.filter(i => getPrimaryRoute(i.route) === 'quick_win_backlog');
             }
 
             // Apply platform filter

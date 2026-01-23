@@ -154,15 +154,20 @@ export class ConfigStore {
     await this.kv.put("source_configs", JSON.stringify(configs));
   }
 
-  // Cache classification result for deduplication
+  // Cache classification result for deduplication (short TTL for demo)
   async cacheClassification(
     feedbackId: string,
     classification: any,
-    ttlSeconds: number = 3600
+    ttlSeconds: number = 300  // 5 minutes for demo (was 1 hour)
   ): Promise<void> {
     await this.kv.put(`classification:${feedbackId}`, JSON.stringify(classification), {
       expirationTtl: ttlSeconds,
     });
+  }
+
+  // Clear classification cache for a feedback item (used on reclassification)
+  async clearClassificationCache(feedbackId: string): Promise<void> {
+    await this.kv.delete(`classification:${feedbackId}`);
   }
 
   // Get cached classification
