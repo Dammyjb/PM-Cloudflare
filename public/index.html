@@ -552,12 +552,13 @@
 
         <!-- Filters -->
         <div class="filter-bar">
-            <span class="filter-label">Filter:</span>
+            <span class="filter-label">Priority:</span>
             <button class="filter-btn active" data-filter="all">All</button>
             <button class="filter-btn" data-filter="critical">Critical</button>
             <button class="filter-btn" data-filter="trust_risk">Trust Risk</button>
             <button class="filter-btn" data-filter="quick_win">Quick Wins</button>
             <span class="filter-label" style="margin-left: 16px;">Platform:</span>
+            <button class="filter-btn active" data-platform="all">All</button>
             <button class="filter-btn" data-platform="github">GitHub</button>
             <button class="filter-btn" data-platform="discord">Discord</button>
             <button class="filter-btn" data-platform="x">X</button>
@@ -636,7 +637,12 @@
                 const feedbackData = await feedbackRes.json();
                 const dashboardData = await dashboardRes.json();
 
-                allFeedback = feedbackData.feedback || [];
+                // Deduplicate feedback by ID (in case of any data issues)
+                const feedbackMap = new Map();
+                (feedbackData.feedback || []).forEach(item => {
+                    feedbackMap.set(item.id, item);
+                });
+                allFeedback = Array.from(feedbackMap.values());
 
                 // Update stats
                 const queues = dashboardData.queues || {};
@@ -820,14 +826,9 @@
 
         document.querySelectorAll('.filter-btn[data-platform]').forEach(btn => {
             btn.addEventListener('click', () => {
-                const isActive = btn.classList.contains('active');
                 document.querySelectorAll('.filter-btn[data-platform]').forEach(b => b.classList.remove('active'));
-                if (!isActive) {
-                    btn.classList.add('active');
-                    currentPlatform = btn.dataset.platform;
-                } else {
-                    currentPlatform = null;
-                }
+                btn.classList.add('active');
+                currentPlatform = btn.dataset.platform === 'all' ? null : btn.dataset.platform;
                 renderFeed();
             });
         });

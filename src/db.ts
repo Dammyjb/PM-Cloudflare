@@ -98,10 +98,22 @@ export class FeedbackDB {
       .run();
   }
 
-  // Store extracted signals
+  // Store extracted signals (clears old signals first to prevent duplicates)
   async storeSignals(signals: Signal[]): Promise<void> {
     if (signals.length === 0) return;
 
+    // Get unique feedback IDs to clear old signals
+    const feedbackIds = [...new Set(signals.map(s => s.feedback_id))];
+
+    // Delete existing signals for these feedback items
+    for (const feedbackId of feedbackIds) {
+      await this.db
+        .prepare(`DELETE FROM signals WHERE feedback_id = ?`)
+        .bind(feedbackId)
+        .run();
+    }
+
+    // Insert new signals
     const stmt = this.db.prepare(
       `INSERT INTO signals (feedback_id, signal_type, signal_value, confidence)
        VALUES (?, ?, ?, ?)`
