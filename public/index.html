@@ -326,7 +326,7 @@
         }
 
         .detail-score-value {
-            font-size: 24px;
+            font-size: 16px;
             font-weight: 700;
         }
 
@@ -671,6 +671,39 @@
             return 'low';
         }
 
+        // Convert numerical scores to categorical labels
+        function getUrgencyLabel(value) {
+            if (value >= 5) return 'Critical';
+            if (value >= 4) return 'High';
+            if (value >= 3) return 'Medium';
+            if (value >= 2) return 'Low';
+            return 'Minimal';
+        }
+
+        function getSentimentLabel(value) {
+            if (value >= 2) return 'Happy';
+            if (value >= 1) return 'Satisfied';
+            if (value === 0) return 'Neutral';
+            if (value >= -1) return 'Unhappy';
+            return 'Frustrated';
+        }
+
+        function getImpactLabel(value) {
+            if (value >= 5) return 'Severe';
+            if (value >= 4) return 'High';
+            if (value >= 3) return 'Moderate';
+            if (value >= 2) return 'Low';
+            return 'Minimal';
+        }
+
+        function getActionabilityLabel(value) {
+            if (value >= 5) return 'Immediate';
+            if (value >= 4) return 'Clear';
+            if (value >= 3) return 'Moderate';
+            if (value >= 2) return 'Vague';
+            return 'Unclear';
+        }
+
         // Render the feed
         function renderFeed() {
             const list = document.getElementById('feedList');
@@ -730,9 +763,9 @@
                         <div class="feed-item-preview">${escapeHtml(item.content || '')}</div>
                         <div class="feed-item-meta">
                             ${hasScores ? `
-                                <span class="score"><span class="score-dot urgency"></span> Urgency: ${item.urgency}</span>
-                                <span class="score"><span class="score-dot sentiment"></span> Sentiment: ${item.sentiment > 0 ? '+' : ''}${item.sentiment}</span>
-                                <span class="score"><span class="score-dot impact"></span> Impact: ${item.impact}</span>
+                                <span class="score"><span class="score-dot urgency"></span> ${getUrgencyLabel(item.urgency)} Urgency</span>
+                                <span class="score"><span class="score-dot sentiment"></span> ${getSentimentLabel(item.sentiment)}</span>
+                                <span class="score"><span class="score-dot impact"></span> ${getImpactLabel(item.impact)} Impact</span>
                             ` : '<span style="color: #666;">Pending classification</span>'}
                         </div>
 
@@ -740,19 +773,19 @@
                             ${hasScores ? `
                                 <div class="detail-grid">
                                     <div class="detail-score urgency">
-                                        <div class="detail-score-value">${item.urgency}</div>
+                                        <div class="detail-score-value">${getUrgencyLabel(item.urgency)}</div>
                                         <div class="detail-score-label">Urgency</div>
                                     </div>
                                     <div class="detail-score sentiment">
-                                        <div class="detail-score-value">${item.sentiment > 0 ? '+' : ''}${item.sentiment}</div>
+                                        <div class="detail-score-value">${getSentimentLabel(item.sentiment)}</div>
                                         <div class="detail-score-label">Sentiment</div>
                                     </div>
                                     <div class="detail-score impact">
-                                        <div class="detail-score-value">${item.impact}</div>
+                                        <div class="detail-score-value">${getImpactLabel(item.impact)}</div>
                                         <div class="detail-score-label">Impact</div>
                                     </div>
                                     <div class="detail-score actionability">
-                                        <div class="detail-score-value">${item.actionability}</div>
+                                        <div class="detail-score-value">${getActionabilityLabel(item.actionability)}</div>
                                         <div class="detail-score-label">Actionability</div>
                                     </div>
                                 </div>
