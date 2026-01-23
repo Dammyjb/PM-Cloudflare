@@ -406,5 +406,26 @@ function getSampleCloudflaredData(): Feedback[] {
       author: "home-plex-user",
       created_at: new Date().toISOString(),
     },
+    // X (Twitter) feedback
+    {
+      id: "x-001",
+      source: "x",
+      title: "Cloudflare Tunnel is a game changer",
+      content:
+        "Just set up @Cloudflare Tunnel for my home lab and wow, this is so much better than port forwarding. Zero exposed ports, free SSL, and it just works. Took me 15 mins to get my self-hosted apps accessible from anywhere. Highly recommend for anyone running services at home!",
+      label: "Feature Request",
+      author: "@homelabber_mike",
+      created_at: new Date().toISOString(),
+    },
+    {
+      id: "x-002",
+      source: "x",
+      title: "Cloudflared docs could use some love",
+      content:
+        "Love using cloudflared but the docs could really use a quick-start guide for common use cases. Spent a while figuring out how to expose multiple services on different subdomains. Got it working now though - the ingress rules are actually pretty flexible once you understand them.",
+      label: "Documentation",
+      author: "@dev_sarah_codes",
+      created_at: new Date().toISOString(),
+    },
   ];
 }

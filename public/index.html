@@ -19,244 +19,52 @@
         }
 
         .container {
-            max-width: 1400px;
+            max-width: 1000px;
             margin: 0 auto;
             padding: 20px;
         }
 
         header {
             background: linear-gradient(135deg, #f48120 0%, #fa5d29 100%);
-            padding: 30px;
-            margin-bottom: 30px;
+            padding: 24px 30px;
+            margin-bottom: 24px;
             border-radius: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
         }
 
         header h1 {
             color: white;
-            font-size: 28px;
-            margin-bottom: 5px;
+            font-size: 22px;
         }
 
         header p {
             color: rgba(255,255,255,0.9);
-            font-size: 14px;
-        }
-
-        .metrics-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            margin-bottom: 30px;
-        }
-
-        .metric-card {
-            background: #1a1a1a;
-            border-radius: 12px;
-            padding: 24px;
-            border: 1px solid #2a2a2a;
-        }
-
-        .metric-card h3 {
-            color: #888;
-            font-size: 12px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 8px;
-        }
-
-        .metric-card .value {
-            font-size: 36px;
-            font-weight: 700;
-            color: #f48120;
-        }
-
-        .metric-card .subtext {
-            font-size: 12px;
-            color: #666;
-            margin-top: 4px;
-        }
-
-        .queues-section {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 20px;
-            margin-bottom: 30px;
-        }
-
-        .queue-card {
-            background: #1a1a1a;
-            border-radius: 12px;
-            border: 1px solid #2a2a2a;
-            overflow: hidden;
-        }
-
-        .queue-header {
-            padding: 16px 20px;
-            border-bottom: 1px solid #2a2a2a;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .queue-header.critical {
-            background: linear-gradient(90deg, rgba(239,68,68,0.2) 0%, transparent 100%);
-        }
-
-        .queue-header.warning {
-            background: linear-gradient(90deg, rgba(245,158,11,0.2) 0%, transparent 100%);
-        }
-
-        .queue-header.success {
-            background: linear-gradient(90deg, rgba(34,197,94,0.2) 0%, transparent 100%);
-        }
-
-        .queue-header h2 {
-            font-size: 16px;
-            font-weight: 600;
-        }
-
-        .queue-badge {
-            background: #333;
-            color: #fff;
-            padding: 2px 10px;
-            border-radius: 12px;
-            font-size: 12px;
-            font-weight: 600;
-        }
-
-        .queue-items {
-            max-height: 400px;
-            overflow-y: auto;
-        }
-
-        .feedback-item {
-            padding: 16px 20px;
-            border-bottom: 1px solid #222;
-            cursor: pointer;
-            transition: background 0.2s;
-        }
-
-        .feedback-item:hover {
-            background: #222;
-        }
-
-        .feedback-item:last-child {
-            border-bottom: none;
-        }
-
-        .feedback-title {
-            font-weight: 600;
-            margin-bottom: 6px;
-            color: #fff;
-        }
-
-        .feedback-meta {
-            display: flex;
-            gap: 12px;
-            flex-wrap: wrap;
-            font-size: 12px;
-        }
-
-        .score-badge {
-            padding: 2px 8px;
-            border-radius: 4px;
-            font-weight: 600;
-        }
-
-        .score-badge.urgency { background: rgba(239,68,68,0.2); color: #ef4444; }
-        .score-badge.sentiment-neg { background: rgba(245,158,11,0.2); color: #f59e0b; }
-        .score-badge.sentiment-pos { background: rgba(34,197,94,0.2); color: #22c55e; }
-        .score-badge.sentiment-neutral { background: rgba(156,163,175,0.2); color: #9ca3af; }
-        .score-badge.impact { background: rgba(139,92,246,0.2); color: #8b5cf6; }
-        .score-badge.actionability { background: rgba(59,130,246,0.2); color: #3b82f6; }
-
-        .source-tag {
-            background: #333;
-            color: #aaa;
-            padding: 2px 8px;
-            border-radius: 4px;
-        }
-
-        .reasoning {
-            margin-top: 10px;
-            padding: 10px;
-            background: #111;
-            border-radius: 6px;
             font-size: 13px;
-            color: #888;
-            display: none;
         }
 
-        .feedback-item.expanded .reasoning {
-            display: block;
-        }
-
-        .signals-section {
-            background: #1a1a1a;
-            border-radius: 12px;
-            border: 1px solid #2a2a2a;
-            padding: 20px;
-            margin-bottom: 30px;
-        }
-
-        .signals-section h2 {
-            font-size: 16px;
-            margin-bottom: 16px;
-        }
-
-        .signals-grid {
+        .header-actions {
             display: flex;
-            flex-wrap: wrap;
             gap: 10px;
-        }
-
-        .signal-chip {
-            background: #222;
-            border: 1px solid #333;
-            padding: 8px 14px;
-            border-radius: 20px;
-            font-size: 13px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .signal-chip .type {
-            color: #888;
-            font-size: 11px;
-            text-transform: uppercase;
-        }
-
-        .signal-chip .count {
-            background: #f48120;
-            color: #000;
-            padding: 2px 8px;
-            border-radius: 10px;
-            font-size: 11px;
-            font-weight: 700;
-        }
-
-        .actions-bar {
-            display: flex;
-            gap: 12px;
-            margin-bottom: 20px;
-            flex-wrap: wrap;
         }
 
         .btn {
-            background: #f48120;
-            color: #000;
+            background: rgba(255,255,255,0.2);
+            color: #fff;
             border: none;
-            padding: 12px 24px;
+            padding: 10px 18px;
             border-radius: 8px;
             font-weight: 600;
+            font-size: 13px;
             cursor: pointer;
             transition: all 0.2s;
         }
 
         .btn:hover {
-            background: #fa5d29;
-            transform: translateY(-1px);
+            background: rgba(255,255,255,0.3);
         }
 
         .btn.secondary {
@@ -273,70 +81,315 @@
             cursor: not-allowed;
         }
 
-        .summary-section {
+        /* Quick Stats Bar */
+        .stats-bar {
+            display: flex;
+            gap: 24px;
+            margin-bottom: 20px;
+            padding: 16px 20px;
             background: #1a1a1a;
-            border-radius: 12px;
+            border-radius: 10px;
             border: 1px solid #2a2a2a;
-            padding: 24px;
-            margin-bottom: 30px;
         }
 
-        .summary-section h2 {
-            font-size: 18px;
-            margin-bottom: 16px;
+        .stat {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
         }
 
-        .summary-content {
-            white-space: pre-wrap;
-            line-height: 1.8;
-            color: #ccc;
-        }
-
-        .summary-content strong {
+        .stat-value {
+            font-size: 20px;
+            font-weight: 700;
             color: #f48120;
         }
 
-        .loading {
-            text-align: center;
-            padding: 40px;
+        .stat-label {
+            font-size: 12px;
+            color: #888;
+        }
+
+        .stat.critical .stat-value { color: #ef4444; }
+        .stat.warning .stat-value { color: #f59e0b; }
+        .stat.success .stat-value { color: #22c55e; }
+
+        /* Filter Bar */
+        .filter-bar {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 16px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .filter-label {
+            font-size: 12px;
             color: #666;
+            margin-right: 8px;
         }
 
-        .spinner {
-            display: inline-block;
-            width: 30px;
-            height: 30px;
-            border: 3px solid #333;
-            border-top-color: #f48120;
+        .filter-btn {
+            padding: 6px 14px;
+            border-radius: 16px;
+            border: 1px solid #333;
+            background: transparent;
+            color: #888;
+            font-size: 12px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .filter-btn:hover {
+            border-color: #555;
+            color: #fff;
+        }
+
+        .filter-btn.active {
+            background: #f48120;
+            border-color: #f48120;
+            color: #000;
+        }
+
+        .filter-btn .count {
+            margin-left: 4px;
+            opacity: 0.7;
+        }
+
+        /* Priority Feed */
+        .priority-feed {
+            background: #1a1a1a;
+            border-radius: 12px;
+            border: 1px solid #2a2a2a;
+            overflow: hidden;
+        }
+
+        .feed-header {
+            padding: 14px 20px;
+            border-bottom: 1px solid #2a2a2a;
+            font-size: 13px;
+            color: #666;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .feed-list {
+            max-height: 70vh;
+            overflow-y: auto;
+        }
+
+        /* Feed Item */
+        .feed-item {
+            padding: 16px 20px;
+            border-bottom: 1px solid #222;
+            cursor: pointer;
+            transition: background 0.15s;
+            display: flex;
+            gap: 16px;
+        }
+
+        .feed-item:hover {
+            background: #222;
+        }
+
+        .feed-item:last-child {
+            border-bottom: none;
+        }
+
+        /* Priority Indicator */
+        .priority-indicator {
+            width: 4px;
+            border-radius: 2px;
+            flex-shrink: 0;
+        }
+
+        .priority-indicator.critical { background: #ef4444; }
+        .priority-indicator.high { background: #f59e0b; }
+        .priority-indicator.medium { background: #3b82f6; }
+        .priority-indicator.low { background: #22c55e; }
+
+        .feed-item-content {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .feed-item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 6px;
+        }
+
+        .feed-item-title {
+            font-weight: 600;
+            color: #fff;
+            font-size: 14px;
+        }
+
+        .feed-item-badges {
+            display: flex;
+            gap: 6px;
+            flex-shrink: 0;
+        }
+
+        .badge {
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .badge.route {
+            background: rgba(239,68,68,0.15);
+            color: #ef4444;
+        }
+
+        .badge.route.trust_risk {
+            background: rgba(245,158,11,0.15);
+            color: #f59e0b;
+        }
+
+        .badge.route.quick_win_backlog {
+            background: rgba(34,197,94,0.15);
+            color: #22c55e;
+        }
+
+        .badge.route.standard_backlog {
+            background: rgba(156,163,175,0.15);
+            color: #9ca3af;
+        }
+
+        .badge.source {
+            background: #333;
+            color: #aaa;
+        }
+
+        .feed-item-preview {
+            font-size: 13px;
+            color: #777;
+            margin-bottom: 8px;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .feed-item-meta {
+            display: flex;
+            gap: 16px;
+            font-size: 11px;
+            color: #555;
+        }
+
+        .score {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .score-dot {
+            width: 6px;
+            height: 6px;
             border-radius: 50%;
-            animation: spin 1s linear infinite;
         }
 
-        @keyframes spin {
-            to { transform: rotate(360deg); }
+        .score-dot.urgency { background: #ef4444; }
+        .score-dot.sentiment { background: #f59e0b; }
+        .score-dot.impact { background: #8b5cf6; }
+
+        /* Expanded Detail */
+        .feed-item-detail {
+            display: none;
+            margin-top: 16px;
+            padding-top: 16px;
+            border-top: 1px solid #333;
         }
 
+        .feed-item.expanded .feed-item-detail {
+            display: block;
+        }
+
+        .detail-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .detail-score {
+            text-align: center;
+            padding: 12px;
+            background: #111;
+            border-radius: 8px;
+        }
+
+        .detail-score-value {
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .detail-score-label {
+            font-size: 10px;
+            color: #666;
+            text-transform: uppercase;
+            margin-top: 2px;
+        }
+
+        .detail-score.urgency .detail-score-value { color: #ef4444; }
+        .detail-score.sentiment .detail-score-value { color: #f59e0b; }
+        .detail-score.impact .detail-score-value { color: #8b5cf6; }
+        .detail-score.actionability .detail-score-value { color: #3b82f6; }
+
+        .detail-section {
+            margin-bottom: 12px;
+        }
+
+        .detail-section-title {
+            font-size: 10px;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 6px;
+        }
+
+        .detail-section-content {
+            font-size: 13px;
+            color: #aaa;
+            line-height: 1.6;
+            background: #111;
+            padding: 12px;
+            border-radius: 6px;
+            white-space: pre-wrap;
+        }
+
+        /* Empty State */
         .empty-state {
             text-align: center;
-            padding: 40px;
-            color: #666;
+            padding: 60px 20px;
+            color: #555;
         }
 
+        .empty-state p {
+            margin-bottom: 16px;
+        }
+
+        /* Toast */
         .toast {
             position: fixed;
             bottom: 20px;
             right: 20px;
             background: #22c55e;
             color: #fff;
-            padding: 14px 24px;
+            padding: 12px 20px;
             border-radius: 8px;
             font-weight: 500;
+            font-size: 13px;
             transform: translateY(100px);
             opacity: 0;
             transition: all 0.3s;
+            z-index: 1000;
         }
 
         .toast.show {
@@ -348,82 +401,91 @@
             background: #ef4444;
         }
 
-        /* Input Form Styles */
+        /* Loading */
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #666;
+        }
+
+        .spinner {
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            border: 2px solid #333;
+            border-top-color: #f48120;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Collapsible Input Section */
+        .input-toggle {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .input-toggle-btn {
+            background: transparent;
+            border: 1px dashed #333;
+            color: #666;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 12px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .input-toggle-btn:hover {
+            border-color: #555;
+            color: #999;
+        }
+
         .input-section {
+            display: none;
+            margin-top: 20px;
             background: #1a1a1a;
             border-radius: 12px;
             border: 1px solid #2a2a2a;
-            margin-bottom: 30px;
-            overflow: hidden;
-        }
-
-        .input-header {
-            padding: 16px 20px;
-            background: linear-gradient(90deg, rgba(59,130,246,0.2) 0%, transparent 100%);
-            border-bottom: 1px solid #2a2a2a;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            cursor: pointer;
-        }
-
-        .input-header h2 {
-            font-size: 16px;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .input-header .toggle-icon {
-            transition: transform 0.3s;
-        }
-
-        .input-section.collapsed .input-header .toggle-icon {
-            transform: rotate(-90deg);
-        }
-
-        .input-section.collapsed .input-body {
-            display: none;
-        }
-
-        .input-body {
             padding: 20px;
         }
 
-        .form-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 16px;
-            margin-bottom: 16px;
+        .input-section.show {
+            display: block;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 12px;
         }
 
         .form-group {
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-        }
-
-        .form-group.full-width {
-            grid-column: 1 / -1;
+            flex: 1;
         }
 
         .form-group label {
-            font-size: 12px;
-            color: #888;
+            display: block;
+            font-size: 11px;
+            color: #666;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
+            margin-bottom: 6px;
         }
 
         .form-group input,
         .form-group textarea,
         .form-group select {
+            width: 100%;
             background: #111;
             border: 1px solid #333;
-            border-radius: 8px;
-            padding: 12px;
+            border-radius: 6px;
+            padding: 10px;
             color: #fff;
-            font-size: 14px;
+            font-size: 13px;
             font-family: inherit;
         }
 
@@ -435,551 +497,123 @@
         }
 
         .form-group textarea {
-            min-height: 120px;
+            min-height: 80px;
             resize: vertical;
         }
 
         .form-actions {
             display: flex;
-            gap: 12px;
-            align-items: center;
-        }
-
-        /* Classification Result */
-        .classification-result {
-            margin-top: 20px;
-            padding: 20px;
-            background: #111;
-            border-radius: 8px;
-            border: 1px solid #333;
-            display: none;
-        }
-
-        .classification-result.show {
-            display: block;
-        }
-
-        .result-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 16px;
-        }
-
-        .result-header h3 {
-            font-size: 14px;
-            color: #fff;
-        }
-
-        .result-route {
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: 600;
-        }
-
-        .result-route.immediate_engineering {
-            background: rgba(239,68,68,0.2);
-            color: #ef4444;
-        }
-
-        .result-route.trust_risk {
-            background: rgba(245,158,11,0.2);
-            color: #f59e0b;
-        }
-
-        .result-route.quick_win_backlog {
-            background: rgba(34,197,94,0.2);
-            color: #22c55e;
-        }
-
-        .result-route.standard_backlog {
-            background: rgba(156,163,175,0.2);
-            color: #9ca3af;
-        }
-
-        .result-scores {
-            display: flex;
-            gap: 20px;
-            margin-bottom: 16px;
-        }
-
-        .result-score {
-            text-align: center;
-        }
-
-        .result-score .score-value {
-            font-size: 28px;
-            font-weight: 700;
-        }
-
-        .result-score .score-label {
-            font-size: 11px;
-            color: #666;
-            text-transform: uppercase;
-        }
-
-        .result-score.urgency .score-value { color: #ef4444; }
-        .result-score.sentiment .score-value { color: #f59e0b; }
-        .result-score.impact .score-value { color: #8b5cf6; }
-        .result-score.actionability .score-value { color: #3b82f6; }
-
-        .result-reasoning {
-            padding: 12px;
-            background: #0a0a0a;
-            border-radius: 6px;
-            font-size: 13px;
-            color: #aaa;
-            line-height: 1.6;
-        }
-
-        .result-actions {
-            display: flex;
             gap: 10px;
-            margin-top: 16px;
-            flex-wrap: wrap;
+            margin-top: 12px;
         }
 
-        .action-btn {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            padding: 10px 16px;
-            border: 1px solid #333;
-            border-radius: 8px;
-            background: #1a1a1a;
-            color: #fff;
-            font-size: 13px;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-
-        .action-btn:hover {
-            background: #252525;
-            border-color: #444;
-            transform: translateY(-1px);
-        }
-
-        .action-btn .action-icon {
-            font-size: 14px;
-        }
-
-        .action-btn.email:hover { border-color: #3b82f6; color: #3b82f6; }
-        .action-btn.slack:hover { border-color: #22c55e; color: #22c55e; }
-        .action-btn.copy:hover { border-color: #f59e0b; color: #f59e0b; }
-        .action-btn.jira:hover { border-color: #8b5cf6; color: #8b5cf6; }
-
-        /* Feedback by Platform Section */
-        .platform-section {
-            background: #1a1a1a;
-            border-radius: 12px;
-            border: 1px solid #2a2a2a;
-            margin-bottom: 30px;
-            overflow: hidden;
-        }
-
-        .platform-section-header {
-            padding: 16px 20px;
-            border-bottom: 1px solid #2a2a2a;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 12px;
-        }
-
-        .platform-section-header h2 {
-            font-size: 18px;
-            font-weight: 600;
-        }
-
-        .platform-filters {
-            display: flex;
-            gap: 8px;
-            flex-wrap: wrap;
-        }
-
-        .platform-filter {
-            padding: 8px 16px;
-            border-radius: 20px;
-            border: 1px solid #333;
-            background: #222;
-            color: #aaa;
-            font-size: 13px;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.2s;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .platform-filter:hover {
-            border-color: #444;
-            color: #fff;
-        }
-
-        .platform-filter.active {
+        .form-actions .btn {
             background: #f48120;
-            border-color: #f48120;
             color: #000;
         }
 
-        .platform-filter .count {
-            background: rgba(0,0,0,0.2);
-            padding: 2px 8px;
-            border-radius: 10px;
-            font-size: 11px;
-        }
-
-        .platform-filter.active .count {
-            background: rgba(0,0,0,0.3);
-        }
-
-        .platform-icon {
-            font-size: 14px;
-        }
-
-        .feedback-list {
-            max-height: 600px;
-            overflow-y: auto;
-        }
-
-        .feedback-list-item {
-            padding: 16px 20px;
-            border-bottom: 1px solid #222;
-            cursor: pointer;
-            transition: background 0.2s;
-        }
-
-        .feedback-list-item:hover {
-            background: #222;
-        }
-
-        .feedback-list-item:last-child {
-            border-bottom: none;
-        }
-
-        .feedback-list-item .item-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            gap: 12px;
-            margin-bottom: 8px;
-        }
-
-        .feedback-list-item .item-title {
-            font-weight: 600;
-            color: #fff;
-            flex: 1;
-        }
-
-        .feedback-list-item .item-source {
-            padding: 4px 10px;
-            border-radius: 12px;
-            font-size: 11px;
-            font-weight: 600;
-            text-transform: uppercase;
-        }
-
-        .feedback-list-item .item-source.github { background: rgba(36, 41, 46, 0.8); color: #fff; }
-        .feedback-list-item .item-source.discord { background: rgba(88, 101, 242, 0.3); color: #5865F2; }
-        .feedback-list-item .item-source.x { background: rgba(255, 255, 255, 0.1); color: #fff; }
-        .feedback-list-item .item-source.email { background: rgba(59, 130, 246, 0.2); color: #3b82f6; }
-        .feedback-list-item .item-source.survey { background: rgba(34, 197, 94, 0.2); color: #22c55e; }
-        .feedback-list-item .item-source.manual { background: rgba(156, 163, 175, 0.2); color: #9ca3af; }
-
-        .feedback-list-item .item-preview {
-            font-size: 13px;
-            color: #888;
-            margin-bottom: 10px;
-            line-height: 1.5;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-        }
-
-        .feedback-list-item .item-meta {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-            font-size: 12px;
-        }
-
-        .feedback-list-item .item-date {
-            color: #666;
-        }
-
-        .feedback-list-item .item-label {
-            padding: 2px 8px;
-            border-radius: 4px;
-            background: #333;
-            color: #aaa;
-        }
-
-        /* Expanded feedback detail panel */
-        .feedback-detail-panel {
-            background: #111;
-            border-top: 1px solid #333;
-            padding: 20px;
-            display: none;
-        }
-
-        .feedback-list-item.expanded .feedback-detail-panel {
-            display: block;
-        }
-
-        .detail-section {
-            margin-bottom: 16px;
-        }
-
-        .detail-section:last-child {
-            margin-bottom: 0;
-        }
-
-        .detail-section h4 {
-            font-size: 12px;
-            color: #666;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-bottom: 8px;
-        }
-
-        .detail-content {
-            font-size: 14px;
-            color: #ccc;
-            line-height: 1.6;
-            white-space: pre-wrap;
-        }
-
-        .detail-scores {
-            display: flex;
-            gap: 16px;
-            flex-wrap: wrap;
-        }
-
-        .detail-score {
-            text-align: center;
-            padding: 12px 16px;
-            background: #1a1a1a;
-            border-radius: 8px;
-            min-width: 80px;
-        }
-
-        .detail-score .score-value {
-            font-size: 24px;
-            font-weight: 700;
-        }
-
-        .detail-score .score-label {
-            font-size: 10px;
-            color: #666;
-            text-transform: uppercase;
-            margin-top: 4px;
-        }
-
-        .detail-score.urgency .score-value { color: #ef4444; }
-        .detail-score.sentiment .score-value { color: #f59e0b; }
-        .detail-score.impact .score-value { color: #8b5cf6; }
-        .detail-score.actionability .score-value { color: #3b82f6; }
-
-        .detail-route {
-            display: inline-block;
-            padding: 6px 14px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: 600;
-        }
-
-        .detail-route.immediate_engineering { background: rgba(239,68,68,0.2); color: #ef4444; }
-        .detail-route.trust_risk { background: rgba(245,158,11,0.2); color: #f59e0b; }
-        .detail-route.quick_win_backlog { background: rgba(34,197,94,0.2); color: #22c55e; }
-        .detail-route.standard_backlog { background: rgba(156,163,175,0.2); color: #9ca3af; }
-
-        .detail-reasoning {
-            padding: 12px;
-            background: #0a0a0a;
-            border-radius: 6px;
-            font-size: 13px;
-            color: #aaa;
-            line-height: 1.6;
-        }
-
-        .no-classification {
-            color: #666;
-            font-style: italic;
+        .form-actions .btn:hover {
+            background: #fa5d29;
         }
     </style>
 </head>
 <body>
     <div class="container">
         <header>
-            <h1>Feedback Intelligence Dashboard</h1>
-            <p>Cloudflare/cloudflared - AI-powered feedback analysis</p>
+            <div>
+                <h1>Feedback Intelligence</h1>
+                <p>Cloudflare/cloudflared - Priority-sorted feedback</p>
+            </div>
+            <div class="header-actions">
+                <button class="btn" onclick="classifyPending()" id="classifyBtn">Classify All</button>
+                <button class="btn" onclick="seedData()" id="seedBtn">Load Sample Data</button>
+            </div>
         </header>
 
-        <!-- Ticket Input Form -->
-        <div class="input-section" id="inputSection">
-            <div class="input-header" onclick="toggleInputForm()">
-                <h2>
-                    <span class="toggle-icon">▼</span>
-                    Submit New Ticket for Classification
-                </h2>
-                <span style="font-size: 12px; color: #666;">Click to expand/collapse</span>
+        <!-- Quick Stats -->
+        <div class="stats-bar" id="statsBar">
+            <div class="stat critical">
+                <span class="stat-value" id="statCritical">-</span>
+                <span class="stat-label">Critical</span>
             </div>
-            <div class="input-body">
-                <div class="form-grid">
-                    <div class="form-group">
-                        <label>Source</label>
-                        <select id="ticketSource">
-                            <option value="github">GitHub Issue</option>
-                            <option value="discord">Discord Message</option>
-                            <option value="x">X (Twitter)</option>
-                            <option value="email">Email</option>
-                            <option value="survey">Survey Response</option>
-                            <option value="manual">Manual Entry</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label>Label (optional)</label>
-                        <select id="ticketLabel">
-                            <option value="">None</option>
-                            <option value="Bug">Bug</option>
-                            <option value="Feature Request">Feature Request</option>
-                            <option value="Question">Question</option>
-                            <option value="Documentation">Documentation</option>
-                            <option value="Security">Security</option>
-                        </select>
-                    </div>
-                    <div class="form-group full-width">
-                        <label>Title</label>
-                        <input type="text" id="ticketTitle" placeholder="e.g., Tunnel fails to reconnect after network outage">
-                    </div>
-                    <div class="form-group full-width">
-                        <label>Content / Description</label>
-                        <textarea id="ticketContent" placeholder="Describe the issue, feature request, or question in detail..."></textarea>
-                    </div>
-                </div>
-                <div class="form-actions">
-                    <button class="btn" onclick="submitAndClassify()" id="submitBtn">Submit & Classify</button>
-                    <button class="btn secondary" onclick="clearForm()">Clear</button>
-                    <span id="submitStatus" style="font-size: 13px; color: #666;"></span>
-                </div>
-
-                <!-- Classification Result -->
-                <div class="classification-result" id="classificationResult">
-                    <div class="result-header">
-                        <h3>Classification Result</h3>
-                        <span class="result-route" id="resultRoute"></span>
-                    </div>
-                    <div class="result-scores">
-                        <div class="result-score urgency">
-                            <div class="score-value" id="resultUrgency">-</div>
-                            <div class="score-label">Urgency</div>
-                        </div>
-                        <div class="result-score sentiment">
-                            <div class="score-value" id="resultSentiment">-</div>
-                            <div class="score-label">Sentiment</div>
-                        </div>
-                        <div class="result-score impact">
-                            <div class="score-value" id="resultImpact">-</div>
-                            <div class="score-label">Impact</div>
-                        </div>
-                        <div class="result-score actionability">
-                            <div class="score-value" id="resultActionability">-</div>
-                            <div class="score-label">Actionability</div>
-                        </div>
-                    </div>
-                    <div class="result-reasoning" id="resultReasoning"></div>
-
-                    <!-- Action Buttons -->
-                    <div class="result-actions">
-                        <button class="action-btn email" onclick="sendToEmail()">
-                            <span class="action-icon">✉</span> Send to Email
-                        </button>
-                        <button class="action-btn slack" onclick="copyForSlack()">
-                            <span class="action-icon">💬</span> Copy for Slack
-                        </button>
-                        <button class="action-btn copy" onclick="copyToClipboard()">
-                            <span class="action-icon">📋</span> Copy Report
-                        </button>
-                        <button class="action-btn jira" onclick="createJiraTicket()">
-                            <span class="action-icon">🎫</span> Create Jira
-                        </button>
-                    </div>
-                </div>
+            <div class="stat warning">
+                <span class="stat-value" id="statTrustRisk">-</span>
+                <span class="stat-label">Trust Risk</span>
+            </div>
+            <div class="stat success">
+                <span class="stat-value" id="statQuickWins">-</span>
+                <span class="stat-label">Quick Wins</span>
+            </div>
+            <div class="stat">
+                <span class="stat-value" id="statTotal">-</span>
+                <span class="stat-label">Total</span>
             </div>
         </div>
 
-        <div class="actions-bar">
-            <button class="btn" onclick="generateSummary()" id="summaryBtn">Generate PM Summary</button>
-            <button class="btn secondary" onclick="classifyPending()" id="classifyBtn">Classify Pending</button>
-            <button class="btn secondary" onclick="seedData()" id="seedBtn">Seed Sample Data</button>
-            <button class="btn secondary" onclick="loadDashboard()">Refresh</button>
+        <!-- Filters -->
+        <div class="filter-bar">
+            <span class="filter-label">Filter:</span>
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="critical">Critical</button>
+            <button class="filter-btn" data-filter="trust_risk">Trust Risk</button>
+            <button class="filter-btn" data-filter="quick_win">Quick Wins</button>
+            <span class="filter-label" style="margin-left: 16px;">Platform:</span>
+            <button class="filter-btn" data-platform="github">GitHub</button>
+            <button class="filter-btn" data-platform="discord">Discord</button>
+            <button class="filter-btn" data-platform="x">X</button>
         </div>
 
-        <div id="summaryContainer" class="summary-section" style="display: none;">
-            <h2>PM Summary</h2>
-            <div class="summary-content" id="summaryContent"></div>
-        </div>
-
-        <div class="metrics-grid" id="metricsGrid">
-            <div class="loading"><div class="spinner"></div><p>Loading metrics...</p></div>
-        </div>
-
-        <!-- Feedback by Platform Section -->
-        <div class="platform-section" id="platformSection">
-            <div class="platform-section-header">
-                <h2>Feedback by Platform</h2>
-                <div class="platform-filters" id="platformFilters">
-                    <button class="platform-filter active" data-platform="all">
-                        <span class="platform-icon">📊</span>
-                        All
-                        <span class="count" id="countAll">0</span>
-                    </button>
-                    <button class="platform-filter" data-platform="github">
-                        <span class="platform-icon">🐙</span>
-                        GitHub
-                        <span class="count" id="countGithub">0</span>
-                    </button>
-                    <button class="platform-filter" data-platform="discord">
-                        <span class="platform-icon">💬</span>
-                        Discord
-                        <span class="count" id="countDiscord">0</span>
-                    </button>
-                    <button class="platform-filter" data-platform="x">
-                        <span class="platform-icon">𝕏</span>
-                        X
-                        <span class="count" id="countX">0</span>
-                    </button>
-                    <button class="platform-filter" data-platform="email">
-                        <span class="platform-icon">✉️</span>
-                        Email
-                        <span class="count" id="countEmail">0</span>
-                    </button>
-                    <button class="platform-filter" data-platform="survey">
-                        <span class="platform-icon">📝</span>
-                        Survey
-                        <span class="count" id="countSurvey">0</span>
-                    </button>
-                </div>
+        <!-- Priority Feed -->
+        <div class="priority-feed">
+            <div class="feed-header">
+                <span>Sorted by priority (Urgency + Impact)</span>
+                <span id="feedCount">Loading...</span>
             </div>
-            <div class="feedback-list" id="feedbackList">
-                <div class="loading"><div class="spinner"></div><p>Loading feedback...</p></div>
-            </div>
-        </div>
-
-        <div class="signals-section">
-            <h2>Trending Signals</h2>
-            <div class="signals-grid" id="signalsGrid">
+            <div class="feed-list" id="feedList">
                 <div class="loading"><div class="spinner"></div></div>
             </div>
         </div>
 
-        <div class="queues-section" id="queuesSection">
-            <div class="loading"><div class="spinner"></div><p>Loading queues...</p></div>
+        <!-- Add New Ticket Toggle -->
+        <div class="input-toggle">
+            <button class="input-toggle-btn" onclick="toggleInputForm()">+ Submit New Feedback</button>
+        </div>
+
+        <!-- Input Form (Hidden by default) -->
+        <div class="input-section" id="inputSection">
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Source</label>
+                    <select id="ticketSource">
+                        <option value="github">GitHub</option>
+                        <option value="discord">Discord</option>
+                        <option value="x">X (Twitter)</option>
+                        <option value="email">Email</option>
+                        <option value="survey">Survey</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Label</label>
+                    <select id="ticketLabel">
+                        <option value="">None</option>
+                        <option value="Bug">Bug</option>
+                        <option value="Feature Request">Feature Request</option>
+                        <option value="Question">Question</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Title</label>
+                <input type="text" id="ticketTitle" placeholder="Brief summary of the feedback">
+            </div>
+            <div class="form-group">
+                <label>Content</label>
+                <textarea id="ticketContent" placeholder="Full feedback content..."></textarea>
+            </div>
+            <div class="form-actions">
+                <button class="btn" onclick="submitAndClassify()" id="submitBtn">Submit & Classify</button>
+                <button class="btn secondary" onclick="toggleInputForm()">Cancel</button>
+            </div>
         </div>
     </div>
 
@@ -987,235 +621,190 @@
 
     <script>
         const API_BASE = '';
+        let allFeedback = [];
+        let currentFilter = 'all';
+        let currentPlatform = null;
 
-        async function loadDashboard() {
+        // Load all feedback
+        async function loadFeedback() {
             try {
-                const response = await fetch(`${API_BASE}/api/dashboard?days=7`);
-                const data = await response.json();
-                renderMetrics(data.metrics);
-                renderQueues(data.queues);
-                renderSignals(data.trending_signals);
+                const [feedbackRes, dashboardRes] = await Promise.all([
+                    fetch(`${API_BASE}/api/feedback?limit=200`),
+                    fetch(`${API_BASE}/api/dashboard?days=30`)
+                ]);
+
+                const feedbackData = await feedbackRes.json();
+                const dashboardData = await dashboardRes.json();
+
+                allFeedback = feedbackData.feedback || [];
+
+                // Update stats
+                const queues = dashboardData.queues || {};
+                document.getElementById('statCritical').textContent = queues.immediate_engineering?.length || 0;
+                document.getElementById('statTrustRisk').textContent = queues.trust_risk?.length || 0;
+                document.getElementById('statQuickWins').textContent = queues.quick_wins?.length || 0;
+                document.getElementById('statTotal').textContent = allFeedback.length;
+
+                renderFeed();
             } catch (error) {
-                showToast('Failed to load dashboard', true);
-                console.error(error);
+                console.error('Failed to load:', error);
+                document.getElementById('feedList').innerHTML =
+                    '<div class="empty-state"><p>Failed to load feedback</p><button class="btn secondary" onclick="loadFeedback()">Retry</button></div>';
             }
         }
 
-        function renderMetrics(metrics) {
-            const grid = document.getElementById('metricsGrid');
-            grid.innerHTML = `
-                <div class="metric-card">
-                    <h3>Total Feedback</h3>
-                    <div class="value">${metrics.total}</div>
-                    <div class="subtext">Last 7 days</div>
-                </div>
-                <div class="metric-card">
-                    <h3>Avg Urgency</h3>
-                    <div class="value">${metrics.averages?.avg_urgency?.toFixed(1) || 'N/A'}</div>
-                    <div class="subtext">Scale: 1-5</div>
-                </div>
-                <div class="metric-card">
-                    <h3>Avg Sentiment</h3>
-                    <div class="value">${metrics.averages?.avg_sentiment?.toFixed(1) || 'N/A'}</div>
-                    <div class="subtext">Scale: -2 to +2</div>
-                </div>
-                <div class="metric-card">
-                    <h3>Avg Impact</h3>
-                    <div class="value">${metrics.averages?.avg_impact?.toFixed(1) || 'N/A'}</div>
-                    <div class="subtext">Scale: 1-5</div>
-                </div>
-                <div class="metric-card">
-                    <h3>Avg Actionability</h3>
-                    <div class="value">${metrics.averages?.avg_actionability?.toFixed(1) || 'N/A'}</div>
-                    <div class="subtext">Scale: 1-5</div>
-                </div>
-            `;
+        // Calculate priority score
+        function getPriorityScore(item) {
+            if (!item.urgency) return 0;
+            // Higher urgency and impact = higher priority
+            // Negative sentiment adds to priority (trust risk)
+            const sentimentBonus = (item.sentiment < 0) ? 2 : 0;
+            return (item.urgency * 2) + item.impact + sentimentBonus;
         }
 
-        function renderQueues(queues) {
-            const section = document.getElementById('queuesSection');
-            section.innerHTML = `
-                <div class="queue-card">
-                    <div class="queue-header critical">
-                        <h2>Immediate Engineering</h2>
-                        <span class="queue-badge">${queues.immediate_engineering?.length || 0}</span>
-                    </div>
-                    <div class="queue-items">
-                        ${renderFeedbackItems(queues.immediate_engineering)}
-                    </div>
-                </div>
-                <div class="queue-card">
-                    <div class="queue-header warning">
-                        <h2>Trust Risk</h2>
-                        <span class="queue-badge">${queues.trust_risk?.length || 0}</span>
-                    </div>
-                    <div class="queue-items">
-                        ${renderFeedbackItems(queues.trust_risk)}
-                    </div>
-                </div>
-                <div class="queue-card">
-                    <div class="queue-header success">
-                        <h2>Quick Wins</h2>
-                        <span class="queue-badge">${queues.quick_wins?.length || 0}</span>
-                    </div>
-                    <div class="queue-items">
-                        ${renderFeedbackItems(queues.quick_wins)}
-                    </div>
-                </div>
-            `;
-
-            // Add click handlers for expanding items
-            document.querySelectorAll('.feedback-item').forEach(item => {
-                item.addEventListener('click', () => {
-                    item.classList.toggle('expanded');
-                });
-            });
+        // Get priority level
+        function getPriorityLevel(item) {
+            if (!item.urgency) return 'low';
+            if (item.urgency >= 4 && item.impact >= 4) return 'critical';
+            if (item.sentiment < 0 && item.impact >= 3) return 'high';
+            if (item.urgency >= 3) return 'medium';
+            return 'low';
         }
 
-        function renderFeedbackItems(items) {
-            if (!items || items.length === 0) {
-                return '<div class="empty-state">No items in this queue</div>';
+        // Render the feed
+        function renderFeed() {
+            const list = document.getElementById('feedList');
+
+            let filtered = allFeedback;
+
+            // Apply route filter
+            if (currentFilter === 'critical') {
+                filtered = filtered.filter(i => i.route?.includes('immediate_engineering'));
+            } else if (currentFilter === 'trust_risk') {
+                filtered = filtered.filter(i => i.route?.includes('trust_risk'));
+            } else if (currentFilter === 'quick_win') {
+                filtered = filtered.filter(i => i.route?.includes('quick_win'));
             }
 
-            return items.map(item => `
-                <div class="feedback-item">
-                    <div class="feedback-title">${escapeHtml(item.title)}</div>
-                    <div class="feedback-meta">
-                        <span class="source-tag">${item.source}</span>
-                        <span class="score-badge urgency">U:${item.urgency}</span>
-                        <span class="score-badge ${getSentimentClass(item.sentiment)}">S:${item.sentiment}</span>
-                        <span class="score-badge impact">I:${item.impact}</span>
-                        <span class="score-badge actionability">A:${item.actionability}</span>
-                    </div>
-                    <div class="reasoning">${escapeHtml(item.reasoning || 'No reasoning available')}</div>
-                </div>
-            `).join('');
-        }
+            // Apply platform filter
+            if (currentPlatform) {
+                filtered = filtered.filter(i => (i.source || '').toLowerCase() === currentPlatform);
+            }
 
-        function getSentimentClass(sentiment) {
-            if (sentiment < 0) return 'sentiment-neg';
-            if (sentiment > 0) return 'sentiment-pos';
-            return 'sentiment-neutral';
-        }
+            // Sort by priority score (highest first)
+            filtered.sort((a, b) => getPriorityScore(b) - getPriorityScore(a));
 
-        function renderSignals(signals) {
-            const grid = document.getElementById('signalsGrid');
-            if (!signals || signals.length === 0) {
-                grid.innerHTML = '<div class="empty-state">No signals detected yet</div>';
+            document.getElementById('feedCount').textContent = `${filtered.length} items`;
+
+            if (filtered.length === 0) {
+                list.innerHTML = '<div class="empty-state"><p>No feedback found</p></div>';
                 return;
             }
 
-            grid.innerHTML = signals.map(signal => `
-                <div class="signal-chip">
-                    <span class="type">${signal.signal_type.replace('_', ' ')}</span>
-                    <span>${signal.signal_value}</span>
-                    <span class="count">${signal.frequency}</span>
+            list.innerHTML = filtered.map(item => renderFeedItem(item)).join('');
+
+            // Click handlers
+            list.querySelectorAll('.feed-item').forEach(el => {
+                el.addEventListener('click', () => el.classList.toggle('expanded'));
+            });
+        }
+
+        // Render single feed item
+        function renderFeedItem(item) {
+            const priority = getPriorityLevel(item);
+            const route = (item.route || 'standard_backlog').split(',')[0];
+            const source = (item.source || 'unknown').toLowerCase();
+            const hasScores = item.urgency !== undefined;
+
+            return `
+                <div class="feed-item">
+                    <div class="priority-indicator ${priority}"></div>
+                    <div class="feed-item-content">
+                        <div class="feed-item-header">
+                            <div class="feed-item-title">${escapeHtml(item.title)}</div>
+                            <div class="feed-item-badges">
+                                ${hasScores ? `<span class="badge route ${route}">${route.replace(/_/g, ' ')}</span>` : ''}
+                                <span class="badge source">${source}</span>
+                            </div>
+                        </div>
+                        <div class="feed-item-preview">${escapeHtml(item.content || '')}</div>
+                        <div class="feed-item-meta">
+                            ${hasScores ? `
+                                <span class="score"><span class="score-dot urgency"></span> Urgency: ${item.urgency}</span>
+                                <span class="score"><span class="score-dot sentiment"></span> Sentiment: ${item.sentiment > 0 ? '+' : ''}${item.sentiment}</span>
+                                <span class="score"><span class="score-dot impact"></span> Impact: ${item.impact}</span>
+                            ` : '<span style="color: #666;">Pending classification</span>'}
+                        </div>
+
+                        <div class="feed-item-detail">
+                            ${hasScores ? `
+                                <div class="detail-grid">
+                                    <div class="detail-score urgency">
+                                        <div class="detail-score-value">${item.urgency}</div>
+                                        <div class="detail-score-label">Urgency</div>
+                                    </div>
+                                    <div class="detail-score sentiment">
+                                        <div class="detail-score-value">${item.sentiment > 0 ? '+' : ''}${item.sentiment}</div>
+                                        <div class="detail-score-label">Sentiment</div>
+                                    </div>
+                                    <div class="detail-score impact">
+                                        <div class="detail-score-value">${item.impact}</div>
+                                        <div class="detail-score-label">Impact</div>
+                                    </div>
+                                    <div class="detail-score actionability">
+                                        <div class="detail-score-value">${item.actionability}</div>
+                                        <div class="detail-score-label">Actionability</div>
+                                    </div>
+                                </div>
+                            ` : ''}
+
+                            <div class="detail-section">
+                                <div class="detail-section-title">Full Content</div>
+                                <div class="detail-section-content">${escapeHtml(item.content || 'No content')}</div>
+                            </div>
+
+                            ${item.reasoning ? `
+                                <div class="detail-section">
+                                    <div class="detail-section-title">AI Reasoning</div>
+                                    <div class="detail-section-content">${escapeHtml(item.reasoning)}</div>
+                                </div>
+                            ` : ''}
+                        </div>
+                    </div>
                 </div>
-            `).join('');
+            `;
         }
 
-        async function generateSummary() {
-            const btn = document.getElementById('summaryBtn');
-            btn.disabled = true;
-            btn.textContent = 'Generating...';
+        // Filter handlers
+        document.querySelectorAll('.filter-btn[data-filter]').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.filter-btn[data-filter]').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                currentFilter = btn.dataset.filter;
+                renderFeed();
+            });
+        });
 
-            try {
-                const response = await fetch(`${API_BASE}/api/summary`, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ days: 7 })
-                });
-                const data = await response.json();
-
-                const container = document.getElementById('summaryContainer');
-                const content = document.getElementById('summaryContent');
-                content.innerHTML = formatSummary(data.summary);
-                container.style.display = 'block';
-
-                showToast('Summary generated successfully');
-            } catch (error) {
-                showToast('Failed to generate summary', true);
-                console.error(error);
-            } finally {
-                btn.disabled = false;
-                btn.textContent = 'Generate PM Summary';
-            }
-        }
-
-        function formatSummary(text) {
-            return text
-                .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-                .replace(/\n/g, '<br>');
-        }
-
-        async function classifyPending() {
-            const btn = document.getElementById('classifyBtn');
-            btn.disabled = true;
-            btn.textContent = 'Classifying...';
-
-            try {
-                const response = await fetch(`${API_BASE}/api/classify`, {
-                    method: 'POST'
-                });
-                const data = await response.json();
-
-                showToast(`Classified ${data.classified?.length || 0} items`);
-                loadDashboard();
-            } catch (error) {
-                showToast('Failed to classify', true);
-                console.error(error);
-            } finally {
-                btn.disabled = false;
-                btn.textContent = 'Classify Pending';
-            }
-        }
-
-        async function seedData() {
-            const btn = document.getElementById('seedBtn');
-            btn.disabled = true;
-            btn.textContent = 'Seeding...';
-
-            try {
-                const response = await fetch(`${API_BASE}/api/seed`, {
-                    method: 'POST'
-                });
-                const data = await response.json();
-
-                showToast(`Seeded ${data.seeded} items`);
-                loadDashboard();
-            } catch (error) {
-                showToast('Failed to seed data', true);
-                console.error(error);
-            } finally {
-                btn.disabled = false;
-                btn.textContent = 'Seed Sample Data';
-            }
-        }
-
-        function showToast(message, isError = false) {
-            const toast = document.getElementById('toast');
-            toast.textContent = message;
-            toast.className = 'toast' + (isError ? ' error' : '');
-            toast.classList.add('show');
-
-            setTimeout(() => {
-                toast.classList.remove('show');
-            }, 3000);
-        }
-
-        function escapeHtml(text) {
-            const div = document.createElement('div');
-            div.textContent = text;
-            return div.innerHTML;
-        }
+        document.querySelectorAll('.filter-btn[data-platform]').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const isActive = btn.classList.contains('active');
+                document.querySelectorAll('.filter-btn[data-platform]').forEach(b => b.classList.remove('active'));
+                if (!isActive) {
+                    btn.classList.add('active');
+                    currentPlatform = btn.dataset.platform;
+                } else {
+                    currentPlatform = null;
+                }
+                renderFeed();
+            });
+        });
 
         // Toggle input form
         function toggleInputForm() {
-            const section = document.getElementById('inputSection');
-            section.classList.toggle('collapsed');
+            document.getElementById('inputSection').classList.toggle('show');
         }
 
-        // Submit and classify new ticket
+        // Submit and classify
         async function submitAndClassify() {
             const title = document.getElementById('ticketTitle').value.trim();
             const content = document.getElementById('ticketContent').value.trim();
@@ -1223,468 +812,102 @@
             const label = document.getElementById('ticketLabel').value;
 
             if (!title || !content) {
-                showToast('Please enter both title and content', true);
+                showToast('Please enter title and content', true);
                 return;
             }
 
             const btn = document.getElementById('submitBtn');
-            const status = document.getElementById('submitStatus');
             btn.disabled = true;
             btn.textContent = 'Processing...';
-            status.textContent = 'Ingesting ticket...';
 
             try {
-                // Generate unique ID
                 const ticketId = `manual-${Date.now()}`;
 
-                // Step 1: Ingest the ticket
-                const ingestResponse = await fetch(`${API_BASE}/api/ingest`, {
+                await fetch(`${API_BASE}/api/ingest`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
                         id: ticketId,
-                        source: source,
-                        title: title,
-                        content: content,
+                        source,
+                        title,
+                        content,
                         label: label || null,
                         author: 'manual-entry',
                         created_at: new Date().toISOString()
                     })
                 });
 
-                if (!ingestResponse.ok) {
-                    throw new Error('Failed to ingest ticket');
-                }
+                await fetch(`${API_BASE}/api/classify?limit=1`, { method: 'POST' });
 
-                status.textContent = 'Classifying with AI...';
-
-                // Step 2: Classify the ticket
-                const classifyResponse = await fetch(`${API_BASE}/api/classify?limit=1`, {
-                    method: 'POST'
-                });
-
-                const classifyData = await classifyResponse.json();
-
-                if (classifyData.classified && classifyData.classified.length > 0) {
-                    const result = classifyData.classified.find(c => c.id === ticketId) || classifyData.classified[0];
-                    displayClassificationResult(result);
-                    showToast('Ticket classified successfully!');
-
-                    // Refresh dashboard to show new item
-                    loadDashboard();
-                } else {
-                    showToast('Ticket ingested but classification pending', false);
-                }
-
+                showToast('Feedback submitted and classified');
+                document.getElementById('ticketTitle').value = '';
+                document.getElementById('ticketContent').value = '';
+                toggleInputForm();
+                loadFeedback();
             } catch (error) {
                 showToast('Error: ' + error.message, true);
-                console.error(error);
             } finally {
                 btn.disabled = false;
                 btn.textContent = 'Submit & Classify';
-                status.textContent = '';
             }
         }
 
-        // Display classification result
-        function displayClassificationResult(result) {
-            const container = document.getElementById('classificationResult');
+        // Classify pending
+        async function classifyPending() {
+            const btn = document.getElementById('classifyBtn');
+            btn.disabled = true;
+            btn.textContent = 'Classifying...';
 
-            document.getElementById('resultUrgency').textContent = result.urgency;
-            document.getElementById('resultSentiment').textContent = result.sentiment > 0 ? `+${result.sentiment}` : result.sentiment;
-            document.getElementById('resultImpact').textContent = result.impact;
-            document.getElementById('resultActionability').textContent = result.actionability;
-
-            const routeEl = document.getElementById('resultRoute');
-            const route = result.route || 'standard_backlog';
-            const routeDisplay = route.split(',')[0]; // Take first route if multiple
-            routeEl.textContent = routeDisplay.replace(/_/g, ' ').toUpperCase();
-            routeEl.className = 'result-route ' + routeDisplay;
-
-            document.getElementById('resultReasoning').textContent = result.reasoning || 'No reasoning provided';
-
-            container.classList.add('show');
-        }
-
-        // Clear form
-        function clearForm() {
-            document.getElementById('ticketTitle').value = '';
-            document.getElementById('ticketContent').value = '';
-            document.getElementById('ticketSource').value = 'github';
-            document.getElementById('ticketLabel').value = '';
-            document.getElementById('classificationResult').classList.remove('show');
-        }
-
-        // Store last classification for sharing
-        let lastClassification = null;
-
-        // Update displayClassificationResult to store data
-        const originalDisplayResult = displayClassificationResult;
-        displayClassificationResult = function(result) {
-            lastClassification = {
-                title: document.getElementById('ticketTitle').value,
-                content: document.getElementById('ticketContent').value,
-                source: document.getElementById('ticketSource').value,
-                label: document.getElementById('ticketLabel').value,
-                ...result
-            };
-            originalDisplayResult(result);
-        };
-
-        // Generate report text
-        function generateReport() {
-            if (!lastClassification) return '';
-
-            const c = lastClassification;
-            const routeLabel = (c.route || 'standard_backlog').replace(/_/g, ' ').toUpperCase();
-
-            return `FEEDBACK CLASSIFICATION REPORT
-================================
-Title: ${c.title}
-Source: ${c.source}
-Label: ${c.label || 'None'}
-
-CLASSIFICATION SCORES
----------------------
-Urgency:       ${c.urgency}/5
-Sentiment:     ${c.sentiment > 0 ? '+' : ''}${c.sentiment} (-2 to +2)
-Impact:        ${c.impact}/5
-Actionability: ${c.actionability}/5
-
-ROUTING: ${routeLabel}
-
-AI REASONING
-------------
-${c.reasoning || 'No reasoning provided'}
-
-ORIGINAL CONTENT
-----------------
-${c.content}
-
----
-Generated by Feedback Intelligence Agent
-`;
-        }
-
-        // Send to Email
-        function sendToEmail() {
-            if (!lastClassification) {
-                showToast('No classification to send', true);
-                return;
-            }
-
-            const c = lastClassification;
-            const routeLabel = (c.route || 'standard_backlog').replace(/_/g, ' ').toUpperCase();
-
-            const subject = encodeURIComponent(`[${routeLabel}] ${c.title}`);
-            const body = encodeURIComponent(generateReport());
-
-            window.open(`mailto:?subject=${subject}&body=${body}`, '_blank');
-            showToast('Opening email client...');
-        }
-
-        // Copy for Slack (formatted)
-        function copyForSlack() {
-            if (!lastClassification) {
-                showToast('No classification to copy', true);
-                return;
-            }
-
-            const c = lastClassification;
-            const routeLabel = (c.route || 'standard_backlog').replace(/_/g, ' ').toUpperCase();
-
-            const routeEmoji = {
-                'immediate_engineering': '🚨',
-                'trust_risk': '⚠️',
-                'quick_win_backlog': '✅',
-                'standard_backlog': '📋'
-            };
-            const emoji = routeEmoji[c.route?.split(',')[0]] || '📋';
-
-            const slackMessage = `${emoji} *New Ticket Classified: ${routeLabel}*
-
-*Title:* ${c.title}
-*Source:* ${c.source} | *Label:* ${c.label || 'None'}
-
-*Scores:* Urgency: \`${c.urgency}/5\` | Sentiment: \`${c.sentiment}\` | Impact: \`${c.impact}/5\` | Actionability: \`${c.actionability}/5\`
-
-*AI Reasoning:* ${c.reasoning || 'N/A'}
-
-> ${c.content.substring(0, 300)}${c.content.length > 300 ? '...' : ''}`;
-
-            navigator.clipboard.writeText(slackMessage).then(() => {
-                showToast('Copied Slack message to clipboard!');
-            }).catch(() => {
-                showToast('Failed to copy', true);
-            });
-        }
-
-        // Copy to Clipboard (plain report)
-        function copyToClipboard() {
-            const report = generateReport();
-            if (!report) {
-                showToast('No classification to copy', true);
-                return;
-            }
-
-            navigator.clipboard.writeText(report).then(() => {
-                showToast('Report copied to clipboard!');
-            }).catch(() => {
-                showToast('Failed to copy', true);
-            });
-        }
-
-        // Create Jira Ticket (opens Jira with pre-filled data)
-        function createJiraTicket() {
-            if (!lastClassification) {
-                showToast('No classification to create ticket', true);
-                return;
-            }
-
-            const c = lastClassification;
-
-            // Map urgency to Jira priority
-            const priorityMap = {
-                5: 'Highest',
-                4: 'High',
-                3: 'Medium',
-                2: 'Low',
-                1: 'Lowest'
-            };
-
-            // Map to issue type
-            const typeMap = {
-                'Bug': 'Bug',
-                'Feature Request': 'Story',
-                'Question': 'Task',
-                'Documentation': 'Task',
-                'Security': 'Bug'
-            };
-
-            const jiraData = {
-                summary: c.title,
-                description: `*Source:* ${c.source}
-*Classification:* ${(c.route || 'standard_backlog').replace(/_/g, ' ')}
-
-*Scores:*
-- Urgency: ${c.urgency}/5
-- Sentiment: ${c.sentiment}
-- Impact: ${c.impact}/5
-- Actionability: ${c.actionability}/5
-
-*AI Reasoning:*
-${c.reasoning || 'N/A'}
-
-----
-
-${c.content}`,
-                priority: priorityMap[c.urgency] || 'Medium',
-                type: typeMap[c.label] || 'Task'
-            };
-
-            // Copy Jira-formatted content
-            const jiraText = `Summary: ${jiraData.summary}
-Priority: ${jiraData.priority}
-Type: ${jiraData.type}
-
-Description:
-${jiraData.description}`;
-
-            navigator.clipboard.writeText(jiraText).then(() => {
-                showToast('Jira ticket data copied! Paste into Jira.');
-            }).catch(() => {
-                showToast('Failed to copy', true);
-            });
-        }
-
-        // ============ FEEDBACK BY PLATFORM ============
-
-        let allFeedback = [];
-        let currentPlatformFilter = 'all';
-
-        // Load all feedback
-        async function loadAllFeedback() {
             try {
-                const response = await fetch(`${API_BASE}/api/feedback?limit=200`);
+                const response = await fetch(`${API_BASE}/api/classify`, { method: 'POST' });
                 const data = await response.json();
-                allFeedback = data.feedback || [];
-                updatePlatformCounts();
-                renderFeedbackList();
+                showToast(`Classified ${data.classified?.length || 0} items`);
+                loadFeedback();
             } catch (error) {
-                console.error('Failed to load feedback:', error);
-                document.getElementById('feedbackList').innerHTML =
-                    '<div class="empty-state">Failed to load feedback</div>';
+                showToast('Failed to classify', true);
+            } finally {
+                btn.disabled = false;
+                btn.textContent = 'Classify All';
             }
         }
 
-        // Update platform filter counts
-        function updatePlatformCounts() {
-            const counts = {
-                all: allFeedback.length,
-                github: 0,
-                discord: 0,
-                x: 0,
-                email: 0,
-                survey: 0
-            };
+        // Seed data
+        async function seedData() {
+            const btn = document.getElementById('seedBtn');
+            btn.disabled = true;
+            btn.textContent = 'Loading...';
 
-            allFeedback.forEach(item => {
-                const source = (item.source || '').toLowerCase();
-                if (counts.hasOwnProperty(source)) {
-                    counts[source]++;
-                }
-            });
-
-            document.getElementById('countAll').textContent = counts.all;
-            document.getElementById('countGithub').textContent = counts.github;
-            document.getElementById('countDiscord').textContent = counts.discord;
-            document.getElementById('countX').textContent = counts.x;
-            document.getElementById('countEmail').textContent = counts.email;
-            document.getElementById('countSurvey').textContent = counts.survey;
-        }
-
-        // Filter feedback by platform
-        function filterByPlatform(platform) {
-            currentPlatformFilter = platform;
-
-            // Update active state on filter buttons
-            document.querySelectorAll('.platform-filter').forEach(btn => {
-                btn.classList.toggle('active', btn.dataset.platform === platform);
-            });
-
-            renderFeedbackList();
-        }
-
-        // Render the feedback list
-        function renderFeedbackList() {
-            const list = document.getElementById('feedbackList');
-
-            let filteredFeedback = allFeedback;
-            if (currentPlatformFilter !== 'all') {
-                filteredFeedback = allFeedback.filter(item =>
-                    (item.source || '').toLowerCase() === currentPlatformFilter
-                );
+            try {
+                const response = await fetch(`${API_BASE}/api/seed`, { method: 'POST' });
+                const data = await response.json();
+                showToast(`Loaded ${data.seeded} sample items`);
+                loadFeedback();
+            } catch (error) {
+                showToast('Failed to load sample data', true);
+            } finally {
+                btn.disabled = false;
+                btn.textContent = 'Load Sample Data';
             }
-
-            if (filteredFeedback.length === 0) {
-                list.innerHTML = '<div class="empty-state">No feedback found for this platform</div>';
-                return;
-            }
-
-            // Sort by date (newest first)
-            filteredFeedback.sort((a, b) =>
-                new Date(b.created_at) - new Date(a.created_at)
-            );
-
-            list.innerHTML = filteredFeedback.map(item => renderFeedbackListItem(item)).join('');
-
-            // Add click handlers for expanding items
-            list.querySelectorAll('.feedback-list-item').forEach(el => {
-                el.addEventListener('click', (e) => {
-                    // Don't toggle if clicking on action buttons inside
-                    if (e.target.closest('.action-btn')) return;
-                    el.classList.toggle('expanded');
-                });
-            });
         }
 
-        // Render a single feedback list item
-        function renderFeedbackListItem(item) {
-            const source = (item.source || 'unknown').toLowerCase();
-            const hasClassification = item.urgency !== undefined && item.urgency !== null;
-            const route = item.route || 'standard_backlog';
-            const routeDisplay = route.split(',')[0];
-
-            const dateStr = item.created_at
-                ? new Date(item.created_at).toLocaleDateString('en-US', {
-                    month: 'short', day: 'numeric', year: 'numeric'
-                  })
-                : 'Unknown date';
-
-            return `
-                <div class="feedback-list-item" data-id="${escapeHtml(item.id)}">
-                    <div class="item-header">
-                        <div class="item-title">${escapeHtml(item.title)}</div>
-                        <span class="item-source ${source}">${escapeHtml(item.source || 'Unknown')}</span>
-                    </div>
-                    <div class="item-preview">${escapeHtml(item.content || '')}</div>
-                    <div class="item-meta">
-                        <span class="item-date">${dateStr}</span>
-                        ${item.label ? `<span class="item-label">${escapeHtml(item.label)}</span>` : ''}
-                        ${hasClassification ? `
-                            <span class="score-badge urgency">U:${item.urgency}</span>
-                            <span class="score-badge ${getSentimentClass(item.sentiment)}">S:${item.sentiment}</span>
-                            <span class="score-badge impact">I:${item.impact}</span>
-                        ` : '<span class="item-label">Pending classification</span>'}
-                    </div>
-
-                    <!-- Expanded Detail Panel -->
-                    <div class="feedback-detail-panel">
-                        <div class="detail-section">
-                            <h4>Full Content</h4>
-                            <div class="detail-content">${escapeHtml(item.content || 'No content available')}</div>
-                        </div>
-
-                        ${hasClassification ? `
-                            <div class="detail-section">
-                                <h4>Classification Scores</h4>
-                                <div class="detail-scores">
-                                    <div class="detail-score urgency">
-                                        <div class="score-value">${item.urgency}</div>
-                                        <div class="score-label">Urgency</div>
-                                    </div>
-                                    <div class="detail-score sentiment">
-                                        <div class="score-value">${item.sentiment > 0 ? '+' : ''}${item.sentiment}</div>
-                                        <div class="score-label">Sentiment</div>
-                                    </div>
-                                    <div class="detail-score impact">
-                                        <div class="score-value">${item.impact}</div>
-                                        <div class="score-label">Impact</div>
-                                    </div>
-                                    <div class="detail-score actionability">
-                                        <div class="score-value">${item.actionability}</div>
-                                        <div class="score-label">Actionability</div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="detail-section">
-                                <h4>Routing</h4>
-                                <span class="detail-route ${routeDisplay}">${routeDisplay.replace(/_/g, ' ').toUpperCase()}</span>
-                            </div>
-
-                            <div class="detail-section">
-                                <h4>AI Reasoning</h4>
-                                <div class="detail-reasoning">${escapeHtml(item.reasoning || 'No reasoning available')}</div>
-                            </div>
-                        ` : `
-                            <div class="detail-section">
-                                <p class="no-classification">This feedback has not been classified yet. Click "Classify Pending" to analyze it with AI.</p>
-                            </div>
-                        `}
-
-                        <div class="detail-section">
-                            <h4>Metadata</h4>
-                            <div class="detail-content">ID: ${escapeHtml(item.id)}
-Author: ${escapeHtml(item.author || 'Unknown')}
-Source: ${escapeHtml(item.source || 'Unknown')}
-Created: ${dateStr}</div>
-                        </div>
-                    </div>
-                </div>
-            `;
+        // Toast
+        function showToast(message, isError = false) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.className = 'toast' + (isError ? ' error' : '');
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 3000);
         }
 
-        // Set up platform filter click handlers
-        document.querySelectorAll('.platform-filter').forEach(btn => {
-            btn.addEventListener('click', () => {
-                filterByPlatform(btn.dataset.platform);
-            });
-        });
+        // Escape HTML
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
 
-        // Load dashboard on page load
-        loadDashboard();
-        loadAllFeedback();
+        // Load on page load
+        loadFeedback();
     </script>
 </body>
 </html>
