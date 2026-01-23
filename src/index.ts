@@ -128,17 +128,19 @@ export default {
 
         let fixed = 0;
         for (const item of classified) {
-          // Recalculate route based on existing scores (priority order)
+          // Simplified routing based on PRIMARY characteristic
           let newRoute = "standard_backlog";
 
-          if (item.urgency >= rules.routing_rules.immediate_engineering.urgency_min &&
-              item.impact >= rules.routing_rules.immediate_engineering.impact_min) {
+          // 1. Critical: Urgency >= 4
+          if (item.urgency >= 4) {
             newRoute = "immediate_engineering";
-          } else if (item.sentiment <= rules.routing_rules.trust_risk.sentiment_max &&
-                     item.impact >= rules.routing_rules.trust_risk.impact_min) {
+          }
+          // 2. Trust risk: Negative sentiment
+          else if (item.sentiment <= -1) {
             newRoute = "trust_risk";
-          } else if (item.urgency <= rules.routing_rules.quick_win_backlog.urgency_max &&
-                     item.actionability >= rules.routing_rules.quick_win_backlog.actionability_min) {
+          }
+          // 3. Quick win: High actionability + not urgent
+          else if (item.actionability >= 4 && item.urgency <= 3) {
             newRoute = "quick_win_backlog";
           }
 

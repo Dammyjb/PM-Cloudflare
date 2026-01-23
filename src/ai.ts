@@ -159,30 +159,21 @@ Return ONLY valid JSON (no markdown, no explanation):
     },
     rules: ClassificationRules
   ): string {
+    // Simplified routing - based on PRIMARY characteristic
     // Priority order: immediate_engineering > trust_risk > quick_win_backlog > standard_backlog
-    // Only ONE route per item to avoid duplicate counting
 
-    // 1. Check immediate engineering: Urgency >= 4 AND Impact >= 4 (highest priority)
-    if (
-      classification.urgency >= rules.routing_rules.immediate_engineering.urgency_min &&
-      classification.impact >= rules.routing_rules.immediate_engineering.impact_min
-    ) {
+    // 1. Critical/Urgent items: Urgency >= 4 (simplified - just urgency)
+    if (classification.urgency >= 4) {
       return "immediate_engineering";
     }
 
-    // 2. Check trust risk: Sentiment < 0 AND Impact >= 3
-    if (
-      classification.sentiment <= rules.routing_rules.trust_risk.sentiment_max &&
-      classification.impact >= rules.routing_rules.trust_risk.impact_min
-    ) {
+    // 2. Trust risk: Negative sentiment (frustrated users)
+    if (classification.sentiment <= -1) {
       return "trust_risk";
     }
 
-    // 3. Check quick win: Urgency <= 2 AND Actionability >= 4
-    if (
-      classification.urgency <= rules.routing_rules.quick_win_backlog.urgency_max &&
-      classification.actionability >= rules.routing_rules.quick_win_backlog.actionability_min
-    ) {
+    // 3. Quick win: High actionability + not urgent
+    if (classification.actionability >= 4 && classification.urgency <= 3) {
       return "quick_win_backlog";
     }
 
